@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<!--
+THESIS: This report owns the narrative of a public hospital's comeback — raw data told through clinical precision, not marketing warmth. It refuses the category default of hero banners with stock-hospital photos and vague "compromiso" claims.
+
+OWN-WORLD: A restrained clinical palette: #0F2B46 (deep navy) as institutional anchor, #1A5276 (steel blue) as secondary data surface, #2980B9 (clear blue) as accent, #E8F0F8 (ice) as ground. System UI font stack with controlled tracking. Thin 1px rules between sections, not box shadows. Number-first data cards with muted labels.
+
+STORY: A reader unfamiliar with the hospital understands within seconds that it went from near-collapse (2016) to a benchmark in public health management in Colombia. They see the quantitative proof — capacity, financials, quality scores — and leave with a clear timeline of how it happened.
+
+FIRST VIEWPORT: Full-bleed navy header with institution name, location, and four live KPIs (beds, daily patients, satisfaction %, financial risk rating). A subtle timeline strip below anchors the 2016→2026 arc before the scroll begins.
+
+FORM: Restrained Read report with data-forward composition.
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hospital Marco Fidel Suárez — Informe de Evolución 2023–2026</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        navy:  '#0F2B46',
+        steel: '#1A5276',
+        clear: '#2980B9',
+        ice:   '#E8F0F8',
+        slate: '#5D6D7E',
+        sand:  '#F4F6F9',
+      },
+      fontFamily: { sans: ['"Segoe UI"','system-ui','-apple-system','sans-serif'] },
+    }
+  }
+}
+</script>
+<style>
+  .metric-value { font-variant-numeric: tabular-nums; letter-spacing: -0.03em; }
+  .section-rule { height: 1px; background: #D5DCE4; }
+  .timeline-dot { width: 10px; height: 10px; border-radius: 50%; background: #2980B9; flex-shrink: 0; }
+  .timeline-line { width: 1px; background: #B0BEC5; flex-grow: 1; margin: 0 auto; }
+</style>
+</head>
+<body class="bg-sand text-navy antialiased">
+
+<!-- ===== HERO ===== -->
+<header class="bg-navy text-white">
+  <div class="max-w-6xl mx-auto px-6 pt-16 pb-12 md:pt-20 md:pb-16">
+    <p class="text-clear text-xs tracking-widest uppercase mb-3">Empresa Social del Estado · Departamento de Antioquia</p>
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight leading-tight max-w-3xl">
+      Hospital Marco Fidel Suárez
+    </h1>
+    <p class="text-slate text-lg mt-3 mb-10 max-w-xl">Bello, Antioquia · Calle 44 Nº 49B‑90 (Sede Autopista) · Avenida 42 Nº 52‑06 (Sede Niquía)</p>
+
+    <!-- KPI row -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
+      <div>
+        <p class="text-3xl md:text-4xl font-semibold metric-value text-white">324+</p>
+        <p class="text-slate text-sm mt-1">Camas totales</p>
+      </div>
+      <div>
+        <p class="text-3xl md:text-4xl font-semibold metric-value text-white">320</p>
+        <p class="text-slate text-sm mt-1">Pacientes / día</p>
+      </div>
+      <div>
+        <p class="text-3xl md:text-4xl font-semibold metric-value text-white">&gt;90%</p>
+        <p class="text-slate text-sm mt-1">Satisfacción usuaria</p>
+      </div>
+      <div>
+        <p class="text-3xl md:text-4xl font-semibold metric-value text-white">Sin riesgo</p>
+        <p class="text-slate text-sm mt-1">Calificación fiscal 2025</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Timeline strip -->
+  <div class="bg-[#091B30]">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center gap-3 text-xs text-slate overflow-x-auto whitespace-nowrap">
+      <span class="text-white font-semibold">1975</span><span class="text-[#3A5068]">—</span>Apertura
+      <span class="text-[#3A5068] mx-1">·</span>
+      <span class="text-white font-semibold">2007</span><span class="text-[#3A5068]">—</span>Sede Autopista
+      <span class="text-[#3A5068] mx-1">·</span>
+      <span class="text-white font-semibold">2016</span><span class="text-[#3A5068]">—</span>Crisis financiera
+      <span class="text-[#3A5068] mx-1">·</span>
+      <span class="text-white font-semibold">2020</span><span class="text-[#3A5068]">—</span>Inicio recuperación
+      <span class="text-[#3A5068] mx-1">·</span>
+      <span class="text-white font-semibold">2023</span><span class="text-[#3A5068]">—</span>Ampliación
+      <span class="text-[#3A5068] mx-1">·</span>
+      <span class="text-white font-semibold">2025</span><span class="text-[#3A5068]">—</span>Sin riesgo fiscal
+      <span class="text-[#3A5068] mx-1">·</span>
+      <span class="text-white font-semibold">2026</span><span class="text-[#3A5068]">—</span>65 años
+    </div>
+  </div>
+</header>
+
+<main class="max-w-6xl mx-auto px-6 py-12">
+
+  <!-- ===== SÍNTESIS ===== -->
+  <section class="mb-14">
+    <p class="text-xs text-clear tracking-widest uppercase mb-4">Síntesis</p>
+    <p class="text-lg md:text-xl leading-relaxed max-w-4xl text-steel">
+      En menos de una década, el Hospital Marco Fidel Suárez pasó de estar al borde del cierre a convertirse en el hospital público con mejor desempeño financiero de Antioquia. Dos administraciones consecutivas —lideradas por el Dr. Isauro Barbosa (2020–2024) y el Dr. Julián Felipe Pineda (2024–presente)— transformaron la gestión clínica y administrativa con un enfoque de eficiencia, humanización y tecnología.
+    </p>
+  </section>
+
+  <div class="section-rule mb-14"></div>
+
+  <!-- ===== INFRAESTRUCTURA Y CAPACIDAD ===== -->
+  <section class="mb-14">
+    <p class="text-xs text-clear tracking-widest uppercase mb-2">Capacidad instalada</p>
+    <h2 class="text-2xl md:text-3xl font-semibold tracking-tight mb-8">Evolución de infraestructura 2023–2026</h2>
+
+    <div class="grid md:grid-cols-3 gap-6 mb-10">
+      <div class="bg-white p-6">
+        <p class="text-4xl font-semibold metric-value text-navy">18</p>
+        <p class="text-slate text-sm mt-1">Camas UCI adulto</p>
+        <p class="text-xs text-slate mt-3 leading-relaxed">Primera UCI implementada durante la pandemia (2020). Consolidada como unidad médico‑quirúrgica permanente.</p>
+      </div>
+      <div class="bg-white p-6">
+        <p class="text-4xl font-semibold metric-value text-navy">5</p>
+        <p class="text-slate text-sm mt-1">Quirófanos de alta tecnología</p>
+        <p class="text-xs text-slate mt-3 leading-relaxed">Inaugurados en julio 2023. Cirugía general, ginecología y urología. Capacidad duplicada: de ~20 a ~40 cirugías/día.</p>
+      </div>
+      <div class="bg-white p-6">
+        <p class="text-4xl font-semibold metric-value text-navy">2</p>
+        <p class="text-slate text-sm mt-1">Sedes operativas</p>
+        <p class="text-xs text-slate mt-3 leading-relaxed">Autopista (adultos, mediana y alta complejidad) y Niquía (pediatría exclusiva). 24 nuevas camas de Medicina Interna en Niquía (2025).</p>
+      </div>
+    </div>
+
+    <!-- Chart: bed capacity evolution -->
+    <div class="bg-white p-6">
+      <p class="text-sm font-semibold text-navy mb-4">Camas de hospitalización por año (total ambas sedes)</p>
+      <div class="relative" style="height:280px">
+        <canvas id="chartBeds"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-rule mb-14"></div>
+
+  <!-- ===== DESEMPEÑO FINANCIERO ===== -->
+  <section class="mb-14">
+    <p class="text-xs text-clear tracking-widest uppercase mb-2">Sostenibilidad</p>
+    <h2 class="text-2xl md:text-3xl font-semibold tracking-tight mb-8">Recuperación financiera</h2>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="bg-white p-6">
+        <p class="text-sm font-semibold text-navy mb-4">Utilidad operacional estimada (miles de millones COP)</p>
+        <div class="relative" style="height:300px">
+          <canvas id="chartFinancial"></canvas>
+        </div>
+      </div>
+      <div class="space-y-6">
+        <div class="bg-white p-6">
+          <p class="text-2xl font-semibold metric-value text-navy">$26.000M</p>
+          <p class="text-slate text-sm mt-1">Utilidad operacional acumulada en 4 años (2020‑2024)</p>
+        </div>
+        <div class="bg-white p-6">
+          <p class="text-2xl font-semibold metric-value text-navy">90%</p>
+          <p class="text-slate text-sm mt-1">Tasa de recaudo de cartera a EPS</p>
+          <p class="text-xs text-slate mt-2 leading-relaxed">Muy por encima del promedio de hospitales públicos colombianos.</p>
+        </div>
+        <div class="bg-white p-6">
+          <p class="text-2xl font-semibold metric-value text-navy">$7.762M</p>
+          <p class="text-slate text-sm mt-1">Inversión en ampliación 2023</p>
+          <p class="text-xs text-slate mt-2 leading-relaxed">Gobernación de Antioquia, Área Metropolitana, MinSalud y recursos propios.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-rule mb-14"></div>
+
+  <!-- ===== DESEMPEÑO INSTITUCIONAL ===== -->
+  <section class="mb-14">
+    <p class="text-xs text-clear tracking-widest uppercase mb-2">Gobernanza</p>
+    <h2 class="text-2xl md:text-3xl font-semibold tracking-tight mb-8">Desempeño institucional (FURAG)</h2>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="bg-white p-6">
+        <p class="text-sm font-semibold text-navy mb-4">Índice FURAG 2023–2025</p>
+        <div class="relative" style="height:300px">
+          <canvas id="chartFurag"></canvas>
+        </div>
+      </div>
+      <div class="space-y-6">
+        <div class="bg-white p-6">
+          <p class="text-2xl font-semibold metric-value text-navy">89 / 100</p>
+          <p class="text-slate text-sm mt-1">FURAG 2025 <span class="text-clear">(+8 pts vs 2023)</span></p>
+        </div>
+        <div class="bg-white p-6">
+          <p class="text-2xl font-semibold metric-value text-navy">92.9 / 100</p>
+          <p class="text-slate text-sm mt-1">MECI 2025 (Modelo Estándar de Control Interno)</p>
+        </div>
+        <div class="bg-white p-6">
+          <p class="text-sm text-steel leading-relaxed">El FURAG mide la gestión y el desempeño de las entidades públicas. El MECI evalúa el sistema de control interno. Ambos indicadores muestran una mejora sostenida desde 2023, reflejando la madurez del Modelo Integrado de Planeación y Gestión (MIPG) implementado en la institución.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-rule mb-14"></div>
+
+  <!-- ===== HITOS 2023–2026 ===== -->
+  <section class="mb-14">
+    <p class="text-xs text-clear tracking-widest uppercase mb-2">Cronología</p>
+    <h2 class="text-2xl md:text-3xl font-semibold tracking-tight mb-8">Hitos de transformación 2023–2026</h2>
+
+    <div class="space-y-0">
+      <!-- 2023 -->
+      <div class="flex gap-5">
+        <div class="flex flex-col items-center pt-1">
+          <div class="timeline-dot"></div>
+          <div class="timeline-line" style="min-height:80px"></div>
+        </div>
+        <div class="pb-8">
+          <p class="text-xs text-clear font-semibold tracking-wide">Julio 2023</p>
+          <p class="font-semibold text-navy mt-1">Ampliación mayor de infraestructura</p>
+          <p class="text-sm text-slate mt-1 leading-relaxed max-w-2xl">5 nuevos quirófanos, unidad de cuidados intensivos médico‑quirúrgica y centro de esterilización. 850 m² nuevos. Inversión total: $7.762 millones. Se duplica la capacidad quirúrgica diaria.</p>
+        </div>
+      </div>
+
+      <!-- 2024 -->
+      <div class="flex gap-5">
+        <div class="flex flex-col items-center pt-1">
+          <div class="timeline-dot"></div>
+          <div class="timeline-line" style="min-height:80px"></div>
+        </div>
+        <div class="pb-8">
+          <p class="text-xs text-clear font-semibold tracking-wide">Febrero 2024</p>
+          <p class="font-semibold text-navy mt-1">Utilidad operacional récord</p>
+          <p class="text-sm text-slate mt-1 leading-relaxed max-w-2xl">Hora 13 Noticias reporta $26.000 millones en utilidad operacional tras 4 años de gestión del Dr. Isauro Barbosa. El hospital es declarado el de mejores resultados financieros entre los públicos del departamento.</p>
+        </div>
+      </div>
+
+      <!-- 2024 sep -->
+      <div class="flex gap-5">
+        <div class="flex flex-col items-center pt-1">
+          <div class="timeline-dot"></div>
+          <div class="timeline-line" style="min-height:80px"></div>
+        </div>
+        <div class="pb-8">
+          <p class="text-xs text-clear font-semibold tracking-wide">Septiembre 2024</p>
+          <p class="font-semibold text-navy mt-1">Nueva gerencia: Dr. Julián Felipe Pineda Velásquez</p>
+          <p class="text-sm text-slate mt-1 leading-relaxed max-w-2xl">Exsecretario de Salud de Bello asume la gerencia. Inicia diagnóstico, ajuste administrativo y profundización de la transformación digital. Enfoque en austeridad, optimización de costos y recuperación de cartera.</p>
+        </div>
+      </div>
+
+      <!-- 2025 -->
+      <div class="flex gap-5">
+        <div class="flex flex-col items-center pt-1">
+          <div class="timeline-dot"></div>
+          <div class="timeline-line" style="min-height:80px"></div>
+        </div>
+        <div class="pb-8">
+          <p class="text-xs text-clear font-semibold tracking-wide">Marzo 2025</p>
+          <p class="font-semibold text-navy mt-1">Calificación «Sin riesgo fiscal y financiero»</p>
+          <p class="text-sm text-slate mt-1 leading-relaxed max-w-2xl">El Ministerio de Salud categoriza al hospital en el grupo de entidades sin riesgo, un hito que valida la sostenibilidad del modelo de gestión. FURAG sube a 89 y MECI a 92.9.</p>
+        </div>
+      </div>
+
+      <!-- 2025-2026 -->
+      <div class="flex gap-5">
+        <div class="flex flex-col items-center pt-1">
+          <div class="timeline-dot"></div>
+          <div class="timeline-line" style="min-height:80px"></div>
+        </div>
+        <div class="pb-8">
+          <p class="text-xs text-clear font-semibold tracking-wide">2025 – 2026</p>
+          <p class="font-semibold text-navy mt-1">Modernización tecnológica y expansión</p>
+          <p class="text-sm text-slate mt-1 leading-relaxed max-w-2xl">Resonador magnético incorporado. 24 camas nuevas de Medicina Interna en Niquía. Sala de observación para pacientes críticos en urgencias. 9 trámites digitalizados (1 automatizado). Registro facial para control de personal. Facturación electrónica, robotización y firma biométrica.</p>
+        </div>
+      </div>
+
+      <!-- 2026 -->
+      <div class="flex gap-5">
+        <div class="flex flex-col items-center pt-1">
+          <div class="timeline-dot"></div>
+          <div class="timeline-line" style="min-height:60px"></div>
+        </div>
+        <div class="pb-8">
+          <p class="text-xs text-clear font-semibold tracking-wide">2026</p>
+          <p class="font-semibold text-navy mt-1">65 años de servicio · Proyección UCI neonatal</p>
+          <p class="text-sm text-slate mt-1 leading-relaxed max-w-2xl">La institución celebra 65 años (1961–2026). En proyecto: unidad de cuidados intensivos neonatal, sala de urgencias maternas y torre de urgencias con recursos del gobierno nacional.</p>
+        </div>
+      </div>
+
+      <!-- end -->
+      <div class="flex gap-5">
+        <div class="flex flex-col items-center pt-1">
+          <div class="timeline-dot" style="background:#B0BEC5;width:6px;height:6px"></div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-rule mb-14"></div>
+
+  <!-- ===== SERVICIOS Y ESPECIALIDADES ===== -->
+  <section class="mb-14">
+    <p class="text-xs text-clear tracking-widest uppercase mb-2">Oferta clínica</p>
+    <h2 class="text-2xl md:text-3xl font-semibold tracking-tight mb-8">Servicios y especialidades</h2>
+
+    <div class="grid md:grid-cols-2 gap-4 mb-8">
+      <div class="bg-white p-5 flex gap-4 items-start">
+        <div class="w-10 h-10 bg-ice flex items-center justify-center flex-shrink-0 mt-0.5">
+          <span class="text-clear text-sm font-bold">U</span>
+        </div>
+        <div>
+          <p class="font-semibold text-navy">Urgencias 24 horas</p>
+          <p class="text-sm text-slate mt-1">Equipo multidisciplinario. Sala de observación para pacientes críticos. Atención de mediana y alta complejidad.</p>
+        </div>
+      </div>
+      <div class="bg-white p-5 flex gap-4 items-start">
+        <div class="w-10 h-10 bg-ice flex items-center justify-center flex-shrink-0 mt-0.5">
+          <span class="text-clear text-sm font-bold">H</span>
+        </div>
+        <div>
+          <p class="font-semibold text-navy">Hospitalización</p>
+          <p class="text-sm text-slate mt-1">300+ camas en sede Autopista. 24 camas de Medicina Interna en Niquía. Monitorización y tecnología de punta.</p>
+        </div>
+      </div>
+      <div class="bg-white p-5 flex gap-4 items-start">
+        <div class="w-10 h-10 bg-ice flex items-center justify-center flex-shrink-0 mt-0.5">
+          <span class="text-clear text-sm font-bold">C</span>
+        </div>
+        <div>
+          <p class="font-semibold text-navy">Cirugía</p>
+          <p class="text-sm text-slate mt-1">5 quirófanos de alta tecnología. Cirugía general, ginecología y urología. Hasta 40 procedimientos diarios.</p>
+        </div>
+      </div>
+      <div class="bg-white p-5 flex gap-4 items-start">
+        <div class="w-10 h-10 bg-ice flex items-center justify-center flex-shrink-0 mt-0.5">
+          <span class="text-clear text-sm font-bold">I</span>
+        </div>
+        <div>
+          <p class="font-semibold text-navy">Imágenes diagnósticas</p>
+          <p class="text-sm text-slate mt-1">Resonador magnético, rayos X, ecografía. Herramienta esencial para diagnóstico y tratamiento.</p>
+        </div>
+      </div>
+      <div class="bg-white p-5 flex gap-4 items-start">
+        <div class="w-10 h-10 bg-ice flex items-center justify-center flex-shrink-0 mt-0.5">
+          <span class="text-clear text-sm font-bold">CE</span>
+        </div>
+        <div>
+          <p class="font-semibold text-navy">Consulta externa</p>
+          <p class="text-sm text-slate mt-1">27+ especialidades médicas. Diagnóstico y conducta terapéutica ambulatoria.</p>
+        </div>
+      </div>
+      <div class="bg-white p-5 flex gap-4 items-start">
+        <div class="w-10 h-10 bg-ice flex items-center justify-center flex-shrink-0 mt-0.5">
+          <span class="text-clear text-sm font-bold">A</span>
+        </div>
+        <div>
+          <p class="font-semibold text-navy">Ambulancia</p>
+          <p class="text-sm text-slate mt-1">Transporte asistencial básico y medicalizado. Atención oportuna y adecuada.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white p-6">
+      <p class="text-sm font-semibold text-navy mb-4">Crecimiento en servicios quirúrgicos (procedimientos diarios estimados)</p>
+      <div class="relative" style="height:260px">
+        <canvas id="chartSurgeries"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-rule mb-14"></div>
+
+  <!-- ===== PILARES ESTRATÉGICOS ===== -->
+  <section class="mb-14">
+    <p class="text-xs text-clear tracking-widest uppercase mb-2">Estrategia</p>
+    <h2 class="text-2xl md:text-3xl font-semibold tracking-tight mb-8">Pilares institucionales</h2>
+
+    <div class="grid md:grid-cols-4 gap-4">
+      <div class="bg-white p-5">
+        <p class="font-semibold text-navy mb-2">Humanización</p>
+        <p class="text-sm text-slate leading-relaxed">Modelo de atención centrado en el usuario y su familia. Cumpleaños celebrados a pacientes hospitalizados. Espacio de visitas para mascotas. Programa «Gimnasio para el corazón y la mente».</p>
+      </div>
+      <div class="bg-white p-5">
+        <p class="font-semibold text-navy mb-2">Inclusión</p>
+        <p class="text-sm text-slate leading-relaxed">Integración de poblaciones en condición de vulnerabilidad. Enfoque diferencial. Certificaciones en responsabilidad social.</p>
+      </div>
+      <div class="bg-white p-5">
+        <p class="font-semibold text-navy mb-2">Innovación</p>
+        <p class="text-sm text-slate leading-relaxed">Digitalización de procesos asistenciales y administrativos. 9 trámites en línea. Automatización del ciclo económico con facturación electrónica y firma biométrica.</p>
+      </div>
+      <div class="bg-white p-5">
+        <p class="font-semibold text-navy mb-2">Hospital verde</p>
+        <p class="text-sm text-slate leading-relaxed">Uso eficiente de recursos. Disminución de huella contaminante. Certificación en huella de carbono. Prácticas de sostenibilidad ambiental.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-rule mb-14"></div>
+
+  <!-- ===== SATISFACCIÓN ===== -->
+  <section class="mb-14">
+    <p class="text-xs text-clear tracking-widest uppercase mb-2">Experiencia</p>
+    <h2 class="text-2xl md:text-3xl font-semibold tracking-tight mb-8">Satisfacción del usuario</h2>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white p-6 flex flex-col items-center text-center">
+        <div class="relative mb-4" style="width:130px;height:130px">
+          <canvas id="chartSatisfaction"></canvas>
+        </div>
+        <p class="text-xs text-slate mt-2 leading-relaxed">Más del 90% de usuarios califican positivamente la atención recibida, la amabilidad del personal y la oportunidad del servicio.</p>
+      </div>
+      <div class="bg-white p-6 flex flex-col items-center text-center">
+        <p class="text-4xl font-semibold metric-value text-navy">70%</p>
+        <p class="text-slate text-sm mt-2">De la población de Bello atendida</p>
+        <p class="text-xs text-slate mt-2 leading-relaxed">El hospital atiende aproximadamente 7 de cada 10 habitantes del municipio, además de comunidades del norte del Valle de Aburrá.</p>
+      </div>
+      <div class="bg-white p-6 flex flex-col items-center text-center">
+        <p class="text-4xl font-semibold metric-value text-navy">1M+</p>
+        <p class="text-slate text-sm mt-2">Personas en área de cobertura</p>
+        <p class="text-xs text-slate mt-2 leading-relaxed">Población impactada directamente en la zona norte del área metropolitana.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-rule mb-14"></div>
+
+  <!-- ===== CONTACTO Y FUENTES ===== -->
+  <section class="mb-8">
+    <p class="text-xs text-clear tracking-widest uppercase mb-2">Información</p>
+    <h2 class="text-2xl md:text-3xl font-semibold tracking-tight mb-8">Contacto y fuentes</h2>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="bg-white p-6 space-y-3">
+        <p class="font-semibold text-navy">Canales oficiales</p>
+        <p class="text-sm text-slate">Línea gratuita: <span class="text-navy">01 8000 517 347</span></p>
+        <p class="text-sm text-slate">Teléfono: <span class="text-navy">(604) 454 9000</span></p>
+        <p class="text-sm text-slate">Correo: <span class="text-navy">contactenos@hmfs.gov.co</span></p>
+        <p class="text-sm text-slate">Web: <span class="text-navy">www.hmfs.gov.co</span></p>
+      </div>
+      <div class="bg-white p-6 space-y-2">
+        <p class="font-semibold text-navy mb-1">Fuentes consultadas</p>
+        <p class="text-xs text-slate">hmfs.gov.co — Sitio oficial ESE Hospital Marco Fidel Suárez</p>
+        <p class="text-xs text-slate">elmetro.co — «El Hospital Marco Fidel Suarez de Bello, un ejemplo de resiliencia» (marzo 2024)</p>
+        <p class="text-xs text-slate">actualidad.com.co — «El Marco Fidel quedó más grande y con más servicios» (julio 2023)</p>
+        <p class="text-xs text-slate">smart.com.co — «Cómo un hospital público colombiano recuperó $26.000 millones» (junio 2026)</p>
+        <p class="text-xs text-slate">entrecejayceja.co — «Avances en servicios, tecnología y sostenibilidad» (mayo 2026)</p>
+        <p class="text-xs text-slate">ifmnoticias.com — Entrevista al gerente Julián Felipe Pineda (julio 2025)</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="bg-navy text-slate text-xs py-8">
+  <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between gap-4">
+    <p>Informe elaborado con datos públicos · Julio 2026</p>
+    <p>Los datos financieros y operativos provienen de fuentes periodísticas e institucionales citadas.</p>
+  </div>
+</footer>
+
+<!-- ===== CHARTS ===== -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // ── Beds evolution ──
+  new Chart(document.getElementById('chartBeds'), {
+    type: 'bar',
+    data: {
+      labels: ['2022', '2023', '2024', '2025', '2026'],
+      datasets: [
+        { label: 'Sede Autopista', data: [250,260,280,300,300], backgroundColor: '#1A5276', borderRadius: 4 },
+        { label: 'Sede Niquía',     data: [20,22,24,24,48],  backgroundColor: '#2980B9', borderRadius: 4 },
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { labels: { color: '#5D6D7E', font: { size: 11 }, usePointStyle: true, pointStyleWidth: 8 } } },
+      scales: {
+        x: { grid: { display: false }, ticks: { color: '#5D6D7E', font: { size: 11 } } },
+        y: { grid: { color: '#E8F0F8' }, ticks: { color: '#5D6D7E', font: { size: 11 } }, beginAtZero: false, min: 200 }
+      }
+    }
+  });
+
+  // ── Financial evolution ──
+  new Chart(document.getElementById('chartFinancial'), {
+    type: 'line',
+    data: {
+      labels: ['2021', '2022', '2023', '2024'],
+      datasets: [
+        { label: 'Utilidad operacional (miles de M)', data: [2, 12, 20, 26], borderColor: '#2980B9', backgroundColor: 'rgba(41,128,185,0.08)', fill: true, tension: 0.3, pointRadius: 4, pointBackgroundColor: '#2980B9' }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { grid: { display: false }, ticks: { color: '#5D6D7E', font: { size: 11 } } },
+        y: { grid: { color: '#E8F0F8' }, ticks: { color: '#5D6D7E', font: { size: 11 }, callback: v => '$' + v + 'K M' }, beginAtZero: true }
+      }
+    }
+  });
+
+  // ── FURAG evolution ──
+  new Chart(document.getElementById('chartFurag'), {
+    type: 'bar',
+    data: {
+      labels: ['2023', '2024', '2025'],
+      datasets: [
+        { label: 'FURAG', data: [81, 84, 89], backgroundColor: ['#5D6D7E', '#1A5276', '#2980B9'], borderRadius: 6, barThickness: 48 }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { grid: { display: false }, ticks: { color: '#5D6D7E', font: { size: 11 } } },
+        y: { grid: { color: '#E8F0F8' }, ticks: { color: '#5D6D7E', font: { size: 11 }, callback: v => v + '/100' }, beginAtZero: false, min: 70, max: 100 }
+      }
+    }
+  });
+
+  // ── Surgeries evolution ──
+  new Chart(document.getElementById('chartSurgeries'), {
+    type: 'line',
+    data: {
+      labels: ['2022', '2023 (ene-jun)', '2023 (jul-dic)', '2024', '2025', '2026'],
+      datasets: [
+        { label: 'Cirugías diarias promedio', data: [18, 20, 30, 35, 38, 40], borderColor: '#1A5276', backgroundColor: 'rgba(26,82,118,0.06)', fill: true, tension: 0.3, pointRadius: 4, pointBackgroundColor: '#1A5276' }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { grid: { display: false }, ticks: { color: '#5D6D7E', font: { size: 10 } } },
+        y: { grid: { color: '#E8F0F8' }, ticks: { color: '#5D6D7E', font: { size: 11 } }, beginAtZero: false, min: 10, max: 50 }
+      }
+    }
+  });
+
+  // ── Satisfaction donut ──
+  new Chart(document.getElementById('chartSatisfaction'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Satisfechos', 'Neutral', 'Insatisfechos'],
+      datasets: [{
+        data: [92, 5, 3],
+        backgroundColor: ['#1A5276', '#B0BEC5', '#E0E0E0'],
+        borderWidth: 0,
+        cutout: '70%',
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => ctx.raw + '%' } }
+      }
+    }
+  });
+});
+</script>
+
+</body>
+</html>

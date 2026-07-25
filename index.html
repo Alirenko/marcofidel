@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Informe Financiero — Junta Directiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz@0,8..60;1,8..60&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!--
+THESIS: A financial dashboard that reveals the hospital's economic anatomy through the precision of an architectural section drawing — each module a numbered sheet, every figure a measured dimension, the institution made legible as structure.
+
+OWN-WORLD: Drafting-table white ground with structural blueprint-blue rules and annotation lines. JetBrains Mono for measured figures, Work Sans for institutional labels, Barlow Semi Condensed for sheet titles. Thin precise rules replace heavy borders; data points carry dimension lines to margin annotations. A subtle drafting grid underlays every sheet.
+
+STORY: The board moves through numbered sheets — Balance, P&L, Cash Flow, KPIs, Budget, Projections — reading the institution's financial body like a set of architectural sections. Each sheet answers one question. Annotation lines connect figures to their meaning. By the last sheet, the financial picture is complete and actionable.
+
+FIRST VIEWPORT: The Estado de Resultados sheet (L-02) opens as default. A vertical section-cut diagram: ingresos above the centerline, costos below, margins as the space between. Thin horizontal rules separate line items. The period is stamped in the title block. The navigation sidebar shows six numbered sheets.
+
+FORM: Architectural section drawing, candidate 7 of 7 on the grounded list (seed a76e4809). Staging: sequential sheet navigation with the title block anchoring each view.
+-->
+
+<aside class="nav-sidebar" role="navigation" aria-label="Láminas del informe">
+  <div class="nav-sidebar__header">
+    <div class="nav-sidebar__project">INFORME FINANCIERO</div>
+    <div class="nav-sidebar__subtitle">Junta Directiva</div>
+    <div class="nav-sidebar__rule"></div>
+  </div>
+  <nav class="nav-sidebar__sheets" id="sheetNav">
+    <button class="nav-sheet active" data-sheet="0" aria-current="page">
+      <span class="nav-sheet__code">L&#8209;01</span>
+      <span class="nav-sheet__label">Balance General</span>
+    </button>
+    <button class="nav-sheet" data-sheet="1">
+      <span class="nav-sheet__code">L&#8209;02</span>
+      <span class="nav-sheet__label">Estado de Resultados</span>
+    </button>
+    <button class="nav-sheet" data-sheet="2">
+      <span class="nav-sheet__code">L&#8209;03</span>
+      <span class="nav-sheet__label">Flujo de Caja</span>
+    </button>
+    <button class="nav-sheet" data-sheet="3">
+      <span class="nav-sheet__code">L&#8209;04</span>
+      <span class="nav-sheet__label">KPIs Operativos</span>
+    </button>
+    <button class="nav-sheet" data-sheet="4">
+      <span class="nav-sheet__code">L&#8209;05</span>
+      <span class="nav-sheet__label">Presupuesto vs Real</span>
+    </button>
+    <button class="nav-sheet" data-sheet="5">
+      <span class="nav-sheet__code">L&#8209;06</span>
+      <span class="nav-sheet__label">Proyecciones</span>
+    </button>
+  </nav>
+  <div class="nav-sidebar__footer">
+    <div class="nav-sidebar__rule"></div>
+    <button class="nav-sidebar__presenter" id="presenterToggle" aria-pressed="false" title="Modo presentación">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="1" y="2" width="14" height="10" rx="1"/>
+        <path d="M5 15h6M8 12v3"/>
+      </svg>
+      <span>Proyección</span>
+    </button>
+    <div class="nav-sidebar__period" id="currentPeriod">Junio 2026</div>
+  </div>
+</aside>
+
+<main class="drafting-sheet" id="mainSheet">
+  <div class="sheet-grid"></div>
+
+  <div class="sheet-title-block" aria-hidden="true">
+    <div class="sheet-title-block__project">HOSPITAL</div>
+    <div class="sheet-title-block__divider"></div>
+    <div class="sheet-title-block__sheet-code" id="titleSheetCode">L-01</div>
+  </div>
+
+  <div class="sheet-controls">
+    <button class="sheet-btn sheet-btn--prev" id="prevSheet" aria-label="Lámina anterior">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5l-5 5 5 5"/></svg>
+    </button>
+    <button class="sheet-btn sheet-btn--next" id="nextSheet" aria-label="Lámina siguiente">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 5l5 5-5 5"/></svg>
+    </button>
+  </div>
+
+  <div class="sheet-content" id="sheetContent">
+  </div>
+
+  <div class="sheet-legend">
+    <div class="sheet-legend__item">
+      <span class="sheet-legend__swatch sheet-legend__swatch--current"></span>
+      <span id="legendCurrent">Actual</span>
+    </div>
+    <div class="sheet-legend__item">
+      <span class="sheet-legend__swatch sheet-legend__swatch--prior"></span>
+      <span id="legendPrior">Anterior</span>
+    </div>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

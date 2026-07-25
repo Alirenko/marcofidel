@@ -1,0 +1,332 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-25T20:55:00Z",
+  "title": "Design System: Informe Financiero Hospitalario",
+  "extensions": {
+    "colorMeta": {
+      "architectural-white": {
+        "role": "neutral",
+        "displayName": "Architectural White",
+        "canonical": "#FAF9F6",
+        "tonalRamp": [
+          "#E8E6E1",
+          "#EDEBE7",
+          "#F2F0EC",
+          "#F4F2ED",
+          "#FAF9F6",
+          "#FBFBF8",
+          "#FDFCFB",
+          "#FEFEFD"
+        ]
+      },
+      "surface-warm": {
+        "role": "neutral",
+        "displayName": "Surface Warm",
+        "canonical": "#F4F2ED",
+        "tonalRamp": [
+          "#E0DDD6",
+          "#E6E4DE",
+          "#EDEBE5",
+          "#F0EEE9",
+          "#F4F2ED",
+          "#F7F5F1",
+          "#FAF8F5",
+          "#FCFBFA"
+        ]
+      },
+      "ink-full": {
+        "role": "neutral",
+        "displayName": "Ink Full",
+        "canonical": "#1A1D20",
+        "tonalRamp": [
+          "#0D0E10",
+          "#121417",
+          "#171A1D",
+          "#1A1D20",
+          "#2A2D30",
+          "#3A3D40",
+          "#4A4D50",
+          "#5A5D60"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Ink Soft",
+        "canonical": "#4A4D52",
+        "tonalRamp": [
+          "#2A2D30",
+          "#3A3D42",
+          "#4A4D52",
+          "#5A5D62",
+          "#6A6D72",
+          "#7A7D82",
+          "#8A8D92",
+          "#9A9DA2"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Ink Muted",
+        "canonical": "#7A7D82",
+        "tonalRamp": [
+          "#5A5D62",
+          "#6A6D72",
+          "#7A7D82",
+          "#8A8D92",
+          "#9A9DA2",
+          "#AAADB2",
+          "#BABDC2",
+          "#CACDD2"
+        ]
+      },
+      "blueprint-blue": {
+        "role": "primary",
+        "displayName": "Blueprint Blue",
+        "canonical": "#1B5E84",
+        "tonalRamp": [
+          "#0A2535",
+          "#103650",
+          "#16486A",
+          "#1B5E84",
+          "#2575A3",
+          "#358BBF",
+          "#50A0D0",
+          "#75B8E0"
+        ]
+      },
+      "blueprint-blue-soft": {
+        "role": "primary",
+        "displayName": "Blueprint Blue Soft",
+        "canonical": "#3A7DA3",
+        "tonalRamp": [
+          "#1A4D6A",
+          "#255E82",
+          "#306F9A",
+          "#3A7DA3",
+          "#4A8DB3",
+          "#5A9DC3",
+          "#70ADD0",
+          "#85BDD8"
+        ]
+      },
+      "alert-red": {
+        "role": "semantic",
+        "displayName": "Alert Red",
+        "canonical": "#B83A2E",
+        "tonalRamp": [
+          "#4A1510",
+          "#6B2018",
+          "#8C2B20",
+          "#B83A2E",
+          "#CC4A3E",
+          "#D96056",
+          "#E28078",
+          "#ECA09A"
+        ]
+      },
+      "positive-green": {
+        "role": "semantic",
+        "displayName": "Positive Green",
+        "canonical": "#2D6A4F",
+        "tonalRamp": [
+          "#102A1E",
+          "#18402E",
+          "#20553E",
+          "#2D6A4F",
+          "#3A8060",
+          "#4A9670",
+          "#60AC86",
+          "#80C2A0"
+        ]
+      },
+      "annotation-gold": {
+        "role": "semantic",
+        "displayName": "Annotation Gold",
+        "canonical": "#8B6914",
+        "tonalRamp": [
+          "#352808",
+          "#4E3A0C",
+          "#6B5010",
+          "#8B6914",
+          "#A8821E",
+          "#C49A28",
+          "#D8B440",
+          "#E8CC60"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "data": {
+        "displayName": "Data / Mono",
+        "purpose": "Toda cifra financiera: métricas, tablas, gráficos, tooltips. JetBrains Mono con tabular figures para alineación de columnas."
+      },
+      "ui": {
+        "displayName": "UI / Institutional",
+        "purpose": "Etiquetas, navegación, cuerpo de tablas. Work Sans — limpia, neutral, alta legibilidad a distancia."
+      },
+      "heading": {
+        "displayName": "Heading / Architectural",
+        "purpose": "Títulos de lámina y sección. Barlow Semi Condensed — condensada, precisa, la voz del plano."
+      },
+      "narrative": {
+        "displayName": "Narrative / Annotation",
+        "purpose": "Anotaciones al margen, contexto de métricas, subtítulos. Source Serif 4 itálica — la voz del revisor."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Transiciones de navegación entre láminas y toggle de modo presentación."
+      },
+      {
+        "name": "ease-in-out",
+        "value": "cubic-bezier(0.65, 0, 0.35, 1)",
+        "purpose": "Hover states y transiciones de estado en botones."
+      },
+      {
+        "name": "transition-fade",
+        "value": "opacity 0.3s ease-in-out",
+        "purpose": "Transición de contenido al cambiar de lámina (fade out / fade in de 280ms)."
+      },
+      {
+        "name": "transition-sidebar",
+        "value": "width 0.35s cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Colapso de la barra lateral al activar modo presentación."
+      },
+      {
+        "name": "pulse-loading",
+        "value": "opacity + scale 1.2s ease-in-out infinite",
+        "purpose": "Indicador de carga — pulso sutil del acento azul."
+      }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "500px" },
+      { "name": "tablet", "value": "900px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Nav Sheet (active)",
+      "kind": "nav",
+      "refersTo": "nav-sheet-active",
+      "description": "Ítem activo en la barra lateral de navegación de láminas. Código de lámina en azul, indicador lineal izquierdo de 2px.",
+      "html": "<button class=\"ds-nav-sheet ds-nav-sheet--active\" aria-current=\"page\">\n  <span class=\"ds-nav-sheet__code\">L-01</span>\n  <span class=\"ds-nav-sheet__label\">Balance General</span>\n</button>",
+      "css": ".ds-nav-sheet { display: flex; align-items: baseline; gap: 12px; padding: 10px 12px; border: none; background: transparent; cursor: pointer; border-radius: 2px; text-align: left; font-family: 'Work Sans', system-ui, sans-serif; font-size: 0.8125rem; position: relative; transition: background 0.2s cubic-bezier(0.65, 0, 0.35, 1); } .ds-nav-sheet:hover { background: rgba(27, 94, 132, 0.06); } .ds-nav-sheet--active { background: rgba(27, 94, 132, 0.06); } .ds-nav-sheet--active::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 2px; background: #1B5E84; border-radius: 1px; } .ds-nav-sheet__code { font-family: 'JetBrains Mono', monospace; font-size: 0.6875rem; font-weight: 500; color: #7A7D82; min-width: 34px; letter-spacing: 0.02em; } .ds-nav-sheet--active .ds-nav-sheet__code { color: #1B5E84; } .ds-nav-sheet__label { font-size: 0.8125rem; font-weight: 500; color: #4A4D52; line-height: 1.3; } .ds-nav-sheet--active .ds-nav-sheet__label { color: #1A1D20; }"
+    },
+    {
+      "name": "Metric Card",
+      "kind": "card",
+      "refersTo": "metric-card",
+      "description": "Tarjeta de métrica de resumen. Sin borde ni sombra — agrupa etiqueta, valor en JetBrains Mono, y delta opcional con indicador de dirección y color semántico.",
+      "html": "<div class=\"ds-metric-card\">\n  <div class=\"ds-metric-card__label\">INGRESOS TOTALES</div>\n  <div class=\"ds-metric-card__value\">$24,900,000<span class=\"ds-metric-card__unit\">MXN</span></div>\n  <div class=\"ds-metric-card__delta ds-metric-card__delta--up\">↑ +3.2%</div>\n  <div class=\"ds-metric-card__annotation\">Margen bruto: 62.4%</div>\n</div>",
+      "css": ".ds-metric-card { padding: 24px 24px 20px; border-right: 1px solid rgba(27, 94, 132, 0.06); position: relative; } .ds-metric-card:last-child { border-right: none; } .ds-metric-card__label { font-family: 'Work Sans', system-ui, sans-serif; font-size: 0.6875rem; font-weight: 500; color: #7A7D82; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; } .ds-metric-card__value { font-family: 'JetBrains Mono', monospace; font-size: 1.75rem; font-weight: 500; color: #1A1D20; letter-spacing: -0.02em; line-height: 1.1; } .ds-metric-card__unit { font-family: 'Work Sans', system-ui, sans-serif; font-size: 0.75rem; font-weight: 400; color: #7A7D82; margin-left: 4px; } .ds-metric-card__delta { display: inline-flex; align-items: center; gap: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 500; margin-top: 6px; } .ds-metric-card__delta--up { color: #2D6A4F; } .ds-metric-card__delta--down { color: #B83A2E; } .ds-metric-card__annotation { font-family: 'Source Serif 4', serif; font-size: 0.75rem; font-style: italic; color: #7A7D82; margin-top: 4px; }"
+    },
+    {
+      "name": "KPI Item",
+      "kind": "card",
+      "refersTo": "kpi-item",
+      "description": "Indicador operativo de alta jerarquía. Valor grande en JetBrains Mono, contexto narrativo, y threshold vertical opcional.",
+      "html": "<div class=\"ds-kpi-item\">\n  <div class=\"ds-kpi-item__label\">OCUPACIÓN HOSPITALARIA</div>\n  <div class=\"ds-kpi-item__value\">78.4<span class=\"ds-kpi-item__unit\">%</span></div>\n  <div class=\"ds-kpi-item__context\">76.1% · Meta: 80%</div>\n  <div class=\"ds-kpi-item__threshold\">META</div>\n</div>",
+      "css": ".ds-kpi-item { padding: 28px 32px; border-right: 1px solid rgba(27, 94, 132, 0.06); border-bottom: 1px solid rgba(27, 94, 132, 0.06); position: relative; } .ds-kpi-item__label { font-family: 'Work Sans', system-ui, sans-serif; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #7A7D82; margin-bottom: 8px; } .ds-kpi-item__value { font-family: 'JetBrains Mono', monospace; font-size: 2.25rem; font-weight: 500; color: #1A1D20; letter-spacing: -0.02em; line-height: 1.1; } .ds-kpi-item__unit { font-family: 'Work Sans', system-ui, sans-serif; font-size: 0.8125rem; font-weight: 400; color: #7A7D82; margin-left: 6px; } .ds-kpi-item__context { font-family: 'Source Serif 4', serif; font-size: 0.8125rem; font-style: italic; color: #4A4D52; margin-top: 6px; } .ds-kpi-item__threshold { position: absolute; right: 32px; top: 50%; transform: translateY(-50%); font-family: 'JetBrains Mono', monospace; font-size: 0.6875rem; color: #B83A2E; writing-mode: vertical-rl; letter-spacing: 0.04em; }"
+    },
+    {
+      "name": "Data Table",
+      "kind": "custom",
+      "refersTo": "data-table",
+      "description": "Tabla de datos financieros con líneas finas. Cabeceras en Work Sans tracking expandido, celdas de datos en JetBrains Mono alineadas a la derecha.",
+      "html": "<table class=\"ds-data-table\">\n  <thead><tr><th>Concepto</th><th>Junio 2026</th><th>Mayo 2026</th><th>Variación</th></tr></thead>\n  <tbody>\n    <tr><td>Hospitalización</td><td>$8,200,000</td><td>$7,900,000</td><td class=\"ds-data-table__variance--positive\">+$300,000</td></tr>\n    <tr><td>Cirugía</td><td>$6,100,000</td><td>$5,800,000</td><td class=\"ds-data-table__variance--positive\">+$300,000</td></tr>\n  </tbody>\n</table>",
+      "css": ".ds-data-table { width: 100%; border-collapse: collapse; font-size: 0.8125rem; } .ds-data-table thead th { font-family: 'Work Sans', system-ui, sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #7A7D82; text-align: right; padding: 10px 16px; border-bottom: 1px solid rgba(27, 94, 132, 0.12); } .ds-data-table thead th:first-child { text-align: left; } .ds-data-table tbody td { font-family: 'JetBrains Mono', monospace; font-size: 0.8125rem; color: #1A1D20; text-align: right; padding: 10px 16px; border-bottom: 1px solid rgba(27, 94, 132, 0.06); } .ds-data-table tbody td:first-child { font-family: 'Work Sans', system-ui, sans-serif; font-weight: 500; color: #4A4D52; text-align: left; } .ds-data-table__variance--positive { color: #2D6A4F; } .ds-data-table__variance--negative { color: #B83A2E; }"
+    },
+    {
+      "name": "Sheet Button",
+      "kind": "button",
+      "refersTo": "sheet-btn",
+      "description": "Botón de navegación entre láminas (anterior/siguiente). Cuadrado de 40px con borde fino e icono SVG.",
+      "html": "<button class=\"ds-sheet-btn\" aria-label=\"Lámina siguiente\">\n  <svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><path d=\"M8 5l5 5-5 5\"/></svg>\n</button>",
+      "css": ".ds-sheet-btn { width: 40px; height: 40px; border: 1px solid rgba(27, 94, 132, 0.12); background: #FAF9F6; border-radius: 4px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #4A4D52; transition: border-color 0.2s, color 0.2s, background 0.2s; } .ds-sheet-btn:hover { border-color: #1B5E84; color: #1B5E84; background: rgba(27, 94, 132, 0.06); } .ds-sheet-btn:focus-visible { outline: 2px solid #1B5E84; outline-offset: 2px; }"
+    },
+    {
+      "name": "Sheet Header",
+      "kind": "custom",
+      "refersTo": "sheet-header",
+      "description": "Encabezado de lámina: código en azul (L-01), título en Barlow Semi Condensed, subtítulo opcional en Source Serif 4 itálica.",
+      "html": "<div class=\"ds-sheet-header\">\n  <div class=\"ds-sheet-header__code\">L-02</div>\n  <h1 class=\"ds-sheet-header__title\">Estado de Resultados</h1>\n  <p class=\"ds-sheet-header__subtitle\">Junio 2026 — acumulado mensual</p>\n</div>",
+      "css": ".ds-sheet-header { margin-bottom: 40px; } .ds-sheet-header__code { font-family: 'JetBrains Mono', monospace; font-size: 0.6875rem; color: #1B5E84; letter-spacing: 0.08em; margin-bottom: 8px; } .ds-sheet-header__title { font-family: 'Barlow Semi Condensed', system-ui, sans-serif; font-size: 1.75rem; font-weight: 600; color: #1A1D20; letter-spacing: -0.01em; line-height: 1.15; } .ds-sheet-header__subtitle { font-family: 'Source Serif 4', serif; font-size: 0.9375rem; font-style: italic; color: #4A4D52; margin-top: 6px; }"
+    },
+    {
+      "name": "Annotation Line",
+      "kind": "custom",
+      "refersTo": "annotation-line",
+      "description": "Línea de cota del sistema: una línea horizontal corta conectada a texto narrativo en itálica. Simula las líneas de medición de un plano técnico.",
+      "html": "<div class=\"ds-annotation-line\">\n  <span class=\"ds-annotation-line__connector\"></span>\n  <span class=\"ds-annotation-line__label\">Ingresos Totales: $24,900,000</span>\n</div>",
+      "css": ".ds-annotation-line { display: flex; align-items: center; gap: 12px; padding: 12px 0; margin: 4px 0; } .ds-annotation-line__connector { width: 24px; height: 1px; background: rgba(27, 94, 132, 0.12); flex-shrink: 0; } .ds-annotation-line__label { font-family: 'Source Serif 4', serif; font-size: 0.8125rem; font-style: italic; color: #7A7D82; }"
+    },
+    {
+      "name": "Presenter Toggle",
+      "kind": "button",
+      "refersTo": "presenter-toggle",
+      "description": "Toggle de modo presentación en la barra lateral. Agranda tipografía y espaciado para proyección en sala.",
+      "html": "<button class=\"ds-presenter-toggle\" aria-pressed=\"false\">\n  <svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><rect x=\"1\" y=\"2\" width=\"14\" height=\"10\" rx=\"1\"/><path d=\"M5 15h6M8 12v3\"/></svg>\n  <span>Proyección</span>\n</button>",
+      "css": ".ds-presenter-toggle { display: flex; align-items: center; gap: 8px; padding: 10px 0; border: none; background: transparent; cursor: pointer; font-family: 'Work Sans', system-ui, sans-serif; font-size: 0.75rem; font-weight: 500; color: #4A4D52; letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.2s; } .ds-presenter-toggle:hover { color: #1B5E84; } .ds-presenter-toggle[aria-pressed=\"true\"] { color: #1B5E84; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "El Plano de Corte",
+    "overview": "El dashboard toma prestado el lenguaje visual más estructural que conoce una junta de hospital: los planos arquitectónicos con los que gobierna el edificio mismo. Cada módulo financiero es una lámina numerada. Cada cifra es una cota medida con precisión de mesa de dibujo. La institución se revela como estructura — sus ingresos, sus costos, sus márgenes — mediante líneas finas, anotaciones precisas y una economía visual que rechaza todo adorno.\n\nLa identidad es sobria por convicción, no por omisión. El blanco arquitectónico del papel de dibujo como suelo; el azul estructural como único acento; las líneas finas como lenguaje primario de separación. No hay sombras, no hay gradientes, no hay tarjetas flotantes. La jerarquía se construye con peso tipográfico, posición y espacio. El rojo existe solo para marcar umbrales — como la línea de un signo vital que cruza el límite.\n\nEl sistema está diseñado para proyección en sala de juntas: tipografía que se lee a tres metros, contraste que sobrevive a un proyector envejecido, y una densidad de información que permite al presentador narrar, no leer.",
+    "keyCharacteristics": [
+      "Lenguaje visual de plano arquitectónico: líneas finas, cotas, anotaciones, láminas numeradas",
+      "Un solo acento cromático (azul estructural) sobre fondo blanco arquitectónico",
+      "Sin sombras — la separación es por reglas y espacio, no por elevación",
+      "JetBrains Mono para toda cifra financiera; Work Sans para etiquetas institucionales; Barlow Semi Condensed para títulos de lámina; Source Serif 4 para anotaciones narrativas",
+      "Grid de dibujo técnico sutil como textura de fondo",
+      "Modo presentación que escala todo el sistema para proyección en sala de juntas"
+    ],
+    "rules": [
+      {
+        "name": "La Regla del Acento Único",
+        "body": "El azul estructural es el único color no-neutro en la superficie. Rojo y verde aparecen exclusivamente en datos (deltas, variaciones, thresholds) — jamás como decoración ni en elementos de UI.",
+        "section": "colors"
+      },
+      {
+        "name": "La Regla de las Líneas, No Sombras",
+        "body": "La separación entre elementos se logra con líneas finas (1px, rgba del azul estructural al 6–12%) y espacio. Jamás con sombras, elevación o tarjetas flotantes.",
+        "section": "colors"
+      },
+      {
+        "name": "La Regla de la Cifra Monoespaciada",
+        "body": "Toda cifra financiera — en métricas, tablas, gráficos, tooltips — se compone en JetBrains Mono. Ninguna otra familia muestra números en este sistema.",
+        "section": "typography"
+      },
+      {
+        "name": "La Regla de la Anotación en Itálica",
+        "body": "Todo texto de contexto, interpretación o narrativa se compone en Source Serif 4 itálica. La voz que comenta nunca compite con la voz que informa.",
+        "section": "typography"
+      },
+      {
+        "name": "La Regla de Separación por Línea",
+        "body": "Dos superficies adyacentes se separan con una línea de 1px en el color de regla estructural. Nunca con sombra, diferencia de color de fondo, ni blur.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Usar JetBrains Mono para toda cifra financiera — en métricas, tablas, tooltips y gráficos.",
+      "Separar elementos con líneas de 1px en regla estructural (rgba del azul al 6–12%). La línea es el lenguaje del sistema.",
+      "Mantener el azul estructural como único acento cromático en UI. Rojo y verde solo en datos.",
+      "Usar el modo presentación cuando el dashboard se proyecte en sala de juntas.",
+      "Numerar las láminas (L-01 a L-06) y mantener el orden secuencial.",
+      "Anotar totales y contexto con el componente annotation-line.",
+      "Respetar el ancho máximo de lámina (960px estándar, 1100px presentación)."
+    ],
+    "donts": [
+      "No agregar sombras, elevación, tarjetas flotantes ni glass effects.",
+      "No usar gradientes como decoración.",
+      "No introducir un segundo color de acento en la UI.",
+      "No usar tipografías display para títulos de lámina.",
+      "No exceder 6 láminas sin razón de producto confirmada.",
+      "No centrar cifras en tablas.",
+      "No mostrar más de 4 métricas en una fila de resumen."
+    ]
+  }
+}
