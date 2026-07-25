@@ -3,106 +3,923 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Informe Financiero — Junta Directiva</title>
+<title>ESE Hospital Marco Fidel Suárez — Bello, Antioquia</title>
+<meta name="description" content="Hospital público de mediana y alta complejidad en Bello, Antioquia. Urgencias 24h, hospitalización, cirugía, consulta externa y más. Compromiso de Vida desde 1961.">
+<meta name="theme-color" content="#0D3B66">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz@0,8..60;1,8..60&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --blue-deep: #0D3B66;
+  --blue-mid: #1A5F8A;
+  --blue-soft: #E8F0F6;
+  --blue-glow: rgba(13, 59, 102, 0.08);
+  --white: #FFFFFF;
+  --warm-50: #FAF8F5;
+  --warm-100: #F5F1EC;
+  --warm-200: #EBE4DB;
+  --ink: #1C1B1A;
+  --ink-soft: #4A4744;
+  --ink-muted: #8A8580;
+  --gold: #C4922E;
+  --gold-soft: #F5E6C8;
+  --green: #1B7A4A;
+  --red: #C1292E;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 6px 24px rgba(0,0,0,0.04);
+  --shadow-elevated: 0 4px 12px rgba(0,0,0,0.08), 0 20px 48px rgba(0,0,0,0.06);
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--ink);
+  background: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: 'Crimson Text', Georgia, serif;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--blue-deep);
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; }
+h2 { font-size: clamp(1.5rem, 3.5vw, 2.25rem); font-weight: 600; }
+h3 { font-size: 1.125rem; font-weight: 600; letter-spacing: 0; }
+
+a { color: var(--blue-mid); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--blue-deep); }
+
+img { max-width: 100%; display: block; }
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: var(--radius-sm);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+.btn-primary {
+  background: var(--blue-deep);
+  color: var(--white);
+}
+.btn-primary:hover {
+  background: var(--blue-mid);
+  color: var(--white);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-elevated);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--blue-deep);
+  border: 2px solid var(--blue-deep);
+}
+.btn-outline:hover {
+  background: var(--blue-deep);
+  color: var(--white);
+}
+.btn-gold {
+  background: var(--gold);
+  color: var(--white);
+}
+.btn-gold:hover {
+  background: #A87A22;
+  color: var(--white);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-elevated);
+}
+
+/* ── HEADER ── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(13, 59, 102, 0.08);
+}
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.logo-mark {
+  width: 44px;
+  height: 44px;
+  background: var(--blue-deep);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.logo-mark svg { width: 26px; height: 26px; fill: var(--white); }
+.logo-text {
+  font-family: 'Crimson Text', Georgia, serif;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--blue-deep);
+  line-height: 1.2;
+}
+.logo-text span {
+  display: block;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.header-cta { display: flex; gap: 10px; }
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(170deg, var(--blue-deep) 0%, #072540 100%);
+  color: var(--white);
+  padding: 100px 24px 120px;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 50%, rgba(255,255,255,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 80% 30%, rgba(26, 95, 138, 0.3) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--gold) 0%, var(--gold) 40%, transparent 40%, transparent 44%, var(--gold) 44%, var(--gold) 60%, transparent 60%, transparent 64%, var(--gold) 64%, var(--gold) 100%);
+}
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 100px;
+  padding: 6px 18px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  color: var(--gold-soft);
+}
+.hero h1 {
+  color: var(--white);
+  margin-bottom: 20px;
+}
+.hero h1 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--gold-soft);
+}
+.hero-sub {
+  font-size: 1.125rem;
+  color: rgba(255,255,255,0.8);
+  max-width: 560px;
+  margin: 0 auto 36px;
+  line-height: 1.6;
+}
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.hero-actions .btn { font-size: 1rem; padding: 16px 32px; }
+
+/* ── SECTION BASE ── */
+.section {
+  padding: 88px 24px;
+}
+.section-labeled {
+  background: var(--warm-50);
+}
+.section-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+.section-eyebrow {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.section h2 { margin-bottom: 20px; }
+.section-lead {
+  font-size: 1.0625rem;
+  color: var(--ink-soft);
+  max-width: 620px;
+  margin-bottom: 48px;
+}
+
+/* ── SERVICES GRID ── */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+.service-card {
+  background: var(--white);
+  border: 1px solid var(--warm-200);
+  border-radius: var(--radius-md);
+  padding: 32px 28px 28px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.service-card:hover {
+  border-color: var(--blue-mid);
+  box-shadow: var(--shadow-card);
+}
+.service-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--blue-soft);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+.service-icon svg { width: 24px; height: 24px; stroke: var(--blue-deep); fill: none; stroke-width: 2; }
+.service-card h3 { margin-bottom: 6px; color: var(--ink); }
+.service-card p { font-size: 0.875rem; color: var(--ink-soft); line-height: 1.55; }
+
+/* ── LOCATIONS ── */
+.locations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+}
+.location-card {
+  background: var(--white);
+  border: 1px solid var(--warm-200);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.location-map {
+  height: 200px;
+  background: var(--blue-soft);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.location-map-pin {
+  width: 40px;
+  height: 40px;
+  background: var(--blue-deep);
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.location-map-pin::after {
+  content: '';
+  width: 14px;
+  height: 14px;
+  background: var(--white);
+  border-radius: 50%;
+}
+.location-body {
+  padding: 24px 28px 28px;
+}
+.location-body h3 { color: var(--ink); margin-bottom: 8px; }
+.location-address {
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+.location-links { display: flex; gap: 12px; flex-wrap: wrap; }
+.location-links .btn {
+  font-size: 0.8125rem;
+  padding: 10px 18px;
+  border-radius: 100px;
+  border: 1px solid var(--warm-200);
+  background: var(--white);
+  color: var(--ink-soft);
+}
+.location-links .btn:hover {
+  border-color: var(--blue-mid);
+  color: var(--blue-deep);
+}
+
+/* ── QR SECTION ── */
+.qr-section {
+  background: var(--warm-50);
+  border-top: 1px solid var(--warm-200);
+  border-bottom: 1px solid var(--warm-200);
+}
+.qr-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.qr-visual {
+  display: flex;
+  justify-content: center;
+}
+.qr-wrapper {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: var(--shadow-elevated);
+  border: 1px solid var(--warm-200);
+}
+.qr-wrapper canvas {
+  display: block;
+}
+.qr-label {
+  text-align: center;
+  margin-top: 14px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.qr-info h2 { margin-bottom: 16px; }
+.qr-info p {
+  font-size: 1rem;
+  color: var(--ink-soft);
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+.qr-url-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--white);
+  border: 1px solid var(--warm-200);
+  border-radius: var(--radius-sm);
+  padding: 12px 18px;
+  margin-bottom: 12px;
+}
+.qr-url-box code {
+  font-family: 'SF Mono', 'Consolas', monospace;
+  font-size: 0.875rem;
+  color: var(--blue-deep);
+  flex: 1;
+  word-break: break-all;
+}
+.qr-url-box button {
+  background: var(--blue-soft);
+  border: none;
+  border-radius: 4px;
+  padding: 8px 14px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--blue-deep);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+.qr-url-box button:hover { background: #D0E2F0; }
+
+/* ── EMERGENCY BANNER ── */
+.emergency-banner {
+  background: var(--red);
+  color: var(--white);
+  text-align: center;
+  padding: 28px 24px;
+}
+.emergency-banner h2 {
+  color: var(--white);
+  margin-bottom: 4px;
+  font-size: 1.5rem;
+}
+.emergency-banner p {
+  font-size: 0.9375rem;
+  opacity: 0.9;
+  margin-bottom: 14px;
+}
+.emergency-banner .btn {
+  background: var(--white);
+  color: var(--red);
+  font-weight: 700;
+}
+.emergency-banner .btn:hover {
+  background: #FFE8E6;
+  box-shadow: none;
+  transform: none;
+}
+
+/* ── CONTACT STRIP ── */
+.contact-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 28px;
+}
+.contact-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.contact-icon {
+  width: 44px;
+  height: 44px;
+  background: var(--blue-soft);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.contact-icon svg { width: 20px; height: 20px; stroke: var(--blue-deep); fill: none; stroke-width: 2; }
+.contact-item h3 { font-size: 0.875rem; color: var(--ink); margin-bottom: 4px; }
+.contact-item p, .contact-item a {
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+/* ── FOOTER ── */
+.site-footer {
+  background: var(--blue-deep);
+  color: rgba(255,255,255,0.7);
+  padding: 56px 24px 32px;
+}
+.footer-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+}
+.footer-col h4 {
+  font-family: 'Crimson Text', Georgia, serif;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.footer-col p, .footer-col a {
+  font-size: 0.8125rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.7;
+}
+.footer-col a:hover { color: var(--gold-soft); }
+.footer-bottom {
+  max-width: 1080px;
+  margin: 40px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 0.8125rem;
+}
+.footer-social {
+  display: flex;
+  gap: 12px;
+}
+.footer-social a {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.footer-social a:hover { background: rgba(255,255,255,0.18); }
+.footer-social svg { width: 18px; height: 18px; fill: rgba(255,255,255,0.7); }
+
+/* ── STATS ── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 28px;
+  text-align: center;
+}
+.stat-value {
+  font-family: 'Crimson Text', Georgia, serif;
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: var(--blue-deep);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-label {
+  font-size: 0.8125rem;
+  color: var(--ink-muted);
+  font-weight: 500;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .section { padding: 56px 20px; }
+  .hero { padding: 72px 20px 88px; }
+  .header-inner { padding: 12px 20px; }
+  .header-cta .btn { padding: 10px 18px; font-size: 0.8125rem; }
+  .hero h1 { font-size: 2rem; }
+  .hero-sub { font-size: 1rem; }
+  .qr-layout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .qr-info { text-align: center; }
+  .qr-visual { order: -1; }
+  .qr-url-box { flex-direction: column; align-items: stretch; text-align: center; }
+  .services-grid { grid-template-columns: 1fr; }
+  .locations-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+
+@media (max-width: 500px) {
+  .hero-actions { flex-direction: column; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .header-cta { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
 </head>
 <body>
 
-<!--
-THESIS: A financial dashboard that reveals the hospital's economic anatomy through the precision of an architectural section drawing — each module a numbered sheet, every figure a measured dimension, the institution made legible as structure.
-
-OWN-WORLD: Drafting-table white ground with structural blueprint-blue rules and annotation lines. JetBrains Mono for measured figures, Work Sans for institutional labels, Barlow Semi Condensed for sheet titles. Thin precise rules replace heavy borders; data points carry dimension lines to margin annotations. A subtle drafting grid underlays every sheet.
-
-STORY: The board moves through numbered sheets — Balance, P&L, Cash Flow, KPIs, Budget, Projections — reading the institution's financial body like a set of architectural sections. Each sheet answers one question. Annotation lines connect figures to their meaning. By the last sheet, the financial picture is complete and actionable.
-
-FIRST VIEWPORT: The Estado de Resultados sheet (L-02) opens as default. A vertical section-cut diagram: ingresos above the centerline, costos below, margins as the space between. Thin horizontal rules separate line items. The period is stamped in the title block. The navigation sidebar shows six numbered sheets.
-
-FORM: Architectural section drawing, candidate 7 of 7 on the grounded list (seed a76e4809). Staging: sequential sheet navigation with the title block anchoring each view.
--->
-
-<aside class="nav-sidebar" role="navigation" aria-label="Láminas del informe">
-  <div class="nav-sidebar__header">
-    <div class="nav-sidebar__project">INFORME FINANCIERO</div>
-    <div class="nav-sidebar__subtitle">Junta Directiva</div>
-    <div class="nav-sidebar__rule"></div>
-  </div>
-  <nav class="nav-sidebar__sheets" id="sheetNav">
-    <button class="nav-sheet active" data-sheet="0" aria-current="page">
-      <span class="nav-sheet__code">L&#8209;01</span>
-      <span class="nav-sheet__label">Balance General</span>
-    </button>
-    <button class="nav-sheet" data-sheet="1">
-      <span class="nav-sheet__code">L&#8209;02</span>
-      <span class="nav-sheet__label">Estado de Resultados</span>
-    </button>
-    <button class="nav-sheet" data-sheet="2">
-      <span class="nav-sheet__code">L&#8209;03</span>
-      <span class="nav-sheet__label">Flujo de Caja</span>
-    </button>
-    <button class="nav-sheet" data-sheet="3">
-      <span class="nav-sheet__code">L&#8209;04</span>
-      <span class="nav-sheet__label">KPIs Operativos</span>
-    </button>
-    <button class="nav-sheet" data-sheet="4">
-      <span class="nav-sheet__code">L&#8209;05</span>
-      <span class="nav-sheet__label">Presupuesto vs Real</span>
-    </button>
-    <button class="nav-sheet" data-sheet="5">
-      <span class="nav-sheet__code">L&#8209;06</span>
-      <span class="nav-sheet__label">Proyecciones</span>
-    </button>
-  </nav>
-  <div class="nav-sidebar__footer">
-    <div class="nav-sidebar__rule"></div>
-    <button class="nav-sidebar__presenter" id="presenterToggle" aria-pressed="false" title="Modo presentación">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-        <rect x="1" y="2" width="14" height="10" rx="1"/>
-        <path d="M5 15h6M8 12v3"/>
-      </svg>
-      <span>Proyección</span>
-    </button>
-    <div class="nav-sidebar__period" id="currentPeriod">Junio 2026</div>
-  </div>
-</aside>
-
-<main class="drafting-sheet" id="mainSheet">
-  <div class="sheet-grid"></div>
-
-  <div class="sheet-title-block" aria-hidden="true">
-    <div class="sheet-title-block__project">HOSPITAL</div>
-    <div class="sheet-title-block__divider"></div>
-    <div class="sheet-title-block__sheet-code" id="titleSheetCode">L-01</div>
-  </div>
-
-  <div class="sheet-controls">
-    <button class="sheet-btn sheet-btn--prev" id="prevSheet" aria-label="Lámina anterior">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5l-5 5 5 5"/></svg>
-    </button>
-    <button class="sheet-btn sheet-btn--next" id="nextSheet" aria-label="Lámina siguiente">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 5l5 5-5 5"/></svg>
-    </button>
-  </div>
-
-  <div class="sheet-content" id="sheetContent">
-  </div>
-
-  <div class="sheet-legend">
-    <div class="sheet-legend__item">
-      <span class="sheet-legend__swatch sheet-legend__swatch--current"></span>
-      <span id="legendCurrent">Actual</span>
-    </div>
-    <div class="sheet-legend__item">
-      <span class="sheet-legend__swatch sheet-legend__swatch--prior"></span>
-      <span id="legendPrior">Anterior</span>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#" class="logo-group" aria-label="Inicio">
+      <div class="logo-mark">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15l-4-4 1.41-1.41L11 14.17l5.59-5.59L18 10l-7 7z"/></svg>
+      </div>
+      <div class="logo-text">
+        Hospital Marco Fidel Suárez
+        <span>ESE &middot; Bello, Antioquia</span>
+      </div>
+    </a>
+    <div class="header-cta">
+      <a href="#ubicaciones" class="btn btn-outline">Sedes</a>
+      <a href="tel:+576044549000" class="btn btn-primary">Llamar</a>
     </div>
   </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="hero-badge">65 años sirviendo a Bello</p>
+      <h1>Compromiso <em>de Vida</em></h1>
+      <p class="hero-sub">Institución pública de salud de mediana y alta complejidad. Urgencias 24 horas, hospitalización, cirugía, consulta externa y más, para vos y tu familia.</p>
+      <div class="hero-actions">
+        <a href="#servicios" class="btn btn-gold">Nuestros servicios</a>
+        <a href="#ubicaciones" class="btn btn-outline" style="border-color:rgba(255,255,255,0.3);color:white">Cómo llegar</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="stats-grid">
+        <div>
+          <div class="stat-value">1961</div>
+          <div class="stat-label">Año de fundación</div>
+        </div>
+        <div>
+          <div class="stat-value">2</div>
+          <div class="stat-label">Sedes en Bello</div>
+        </div>
+        <div>
+          <div class="stat-value">24h</div>
+          <div class="stat-label">Atención de urgencias</div>
+        </div>
+        <div>
+          <div class="stat-value">89</div>
+          <div class="stat-label">Puntaje FURAG 2025</div>
+        </div>
+        <div>
+          <div class="stat-value">+6</div>
+          <div class="stat-label">Especialidades médicas</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios" class="section section-labeled">
+    <div class="section-inner">
+      <p class="section-eyebrow">Servicios y especialidades</p>
+      <h2>Atención integral para Bello y el norte del Valle de Aburrá</h2>
+      <p class="section-lead">Prestamos servicios de mediana y alta complejidad con un equipo humano altamente calificado y tecnología de punta.</p>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 11h-4v4h-4v-4H6v-4h4V6h4v4h4v4z"/></svg>
+          </div>
+          <h3>Urgencias 24 horas</h3>
+          <p>Atención inmediata con equipo de profesionales y conocimiento técnico-científico altamente calificado. Disponible todos los días del año.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
+          </div>
+          <h3>Hospitalización</h3>
+          <p>Monitorización con tecnología de punta para procedimientos que requieren estancia mayor a 24 horas. Cuidado integral del paciente y su familia.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+          </div>
+          <h3>Cirugía</h3>
+          <p>Quirófanos dotados con equipos de última generación y profesionales especializados en procedimientos de mediana y alta complejidad.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+          </div>
+          <h3>Consulta externa</h3>
+          <p>Diagnóstico y conducta terapéutica ambulatoria. Agenda tu cita en medicina general y especialidades sin necesidad de estar hospitalizado.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+          </div>
+          <h3>Imágenes diagnósticas</h3>
+          <p>Herramientas esenciales para el diagnóstico mediante rayos X, ecografía, fibra óptica y otros métodos de apoyo diagnóstico.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
+          </div>
+          <h3>Ambulancia</h3>
+          <p>Transporte asistencial básico y medicalizado con atención oportuna y adecuada para el traslado seguro de pacientes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ubicaciones" class="section">
+    <div class="section-inner">
+      <p class="section-eyebrow">Nuestras sedes</p>
+      <h2>Dos ubicaciones para servirte mejor</h2>
+      <p class="section-lead">Sede principal en la Autopista y sede alterna en Niquía. Ambas con atención de calidad para la comunidad de Bello.</p>
+
+      <div class="locations-grid">
+        <div class="location-card">
+          <div class="location-map" style="background:linear-gradient(135deg,#0D3B66 0%,#1A5F8A 100%)">
+            <div class="location-map-pin"></div>
+          </div>
+          <div class="location-body">
+            <h3>Sede Autopista</h3>
+            <p class="location-address">Calle 44 Nº 49B-90<br>Bello, Antioquia</p>
+            <p style="font-size:0.8125rem;color:var(--ink-muted);margin-bottom:12px">Servicios de mediana y alta complejidad</p>
+            <div class="location-links">
+              <a href="https://maps.google.com/?q=Calle+44+49B-90+Bello+Antioquia" target="_blank" rel="noopener" class="btn">Google Maps</a>
+              <a href="https://ul.waze.com/ul?place=ChIJLdcDCpcvRI4R-BT6oPpHEyU&ll=6.33030120,-75.55771780&navigate=yes" target="_blank" rel="noopener" class="btn">Waze</a>
+            </div>
+          </div>
+        </div>
+        <div class="location-card">
+          <div class="location-map" style="background:linear-gradient(135deg,#1A5F8A 0%,#0D3B66 100%)">
+            <div class="location-map-pin"></div>
+          </div>
+          <div class="location-body">
+            <h3>Sede Niquía</h3>
+            <p class="location-address">Avenida 42 Nº 52-06<br>Bello, Antioquia</p>
+            <p style="font-size:0.8125rem;color:var(--ink-muted);margin-bottom:12px">Consulta externa y servicios ambulatorios</p>
+            <div class="location-links">
+              <a href="https://maps.google.com/?q=Avenida+42+52-06+Bello+Antioquia" target="_blank" rel="noopener" class="btn">Google Maps</a>
+              <a href="https://ul.waze.com/ul?place=ChIJHSMpn5cvRI4RWik1kp-Ye6I&ll=6.34223500,-75.54820950&navigate=yes" target="_blank" rel="noopener" class="btn">Waze</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="qr-section section">
+    <div class="section-inner">
+      <div class="qr-layout">
+        <div class="qr-visual">
+          <div>
+            <div class="qr-wrapper" id="qrcode-container"></div>
+            <p class="qr-label">Escaneá para guardar este sitio</p>
+          </div>
+        </div>
+        <div class="qr-info">
+          <p class="section-eyebrow">Acceso rápido</p>
+          <h2>Llevá el hospital en tu bolsillo</h2>
+          <p>Escaneá el código QR con la cámara de tu teléfono para acceder a toda la información del Hospital Marco Fidel Suárez: servicios, sedes, teléfonos y urgencias. Compartilo con tu familia.</p>
+          <div class="qr-url-box">
+            <code>alirenko.github.io/marcofidel</code>
+            <button onclick="copyUrl()" id="copy-btn">Copiar link</button>
+          </div>
+          <p style="font-size:0.8125rem;color:var(--ink-muted)">Guardá esta página en tus favoritos. En una emergencia, cada segundo cuenta.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="emergency-banner">
+    <h2>¿Emergencia? No esperes</h2>
+    <p>Nuestro servicio de urgencias está disponible las 24 horas, los 365 días del año. Si vos o un familiar necesitan atención inmediata, no dudes en acudir.</p>
+    <a href="tel:+576044549000" class="btn">Llamar ahora: (604) 454 9000</a>
+  </section>
+
+  <section id="contacto" class="section section-labeled">
+    <div class="section-inner">
+      <p class="section-eyebrow">Contacto</p>
+      <h2>Estamos para servirte</h2>
+      <p class="section-lead">Canales de atención para consultas, citas, PQRS y más.</p>
+
+      <div class="contact-strip">
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          </div>
+          <div>
+            <h3>Teléfono</h3>
+            <a href="tel:+576044549000">(604) 454 9000</a><br>
+            <a href="tel:+5718000517347">01 8000 517 347</a>
+            <p style="font-size:0.75rem;color:var(--ink-muted);margin-top:2px">Línea gratuita nacional</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </div>
+          <div>
+            <h3>Correo electrónico</h3>
+            <a href="mailto:contactenos@hmfs.gov.co">contactenos@hmfs.gov.co</a>
+            <p style="font-size:0.75rem;color:var(--ink-muted);margin-top:2px">PQRS y consultas generales</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+          </div>
+          <div>
+            <h3>Horario de atención</h3>
+            <p>Urgencias: 24 horas<br>Consulta externa: Lunes a viernes<br>6:00 AM – 5:00 PM</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+          <div>
+            <h3>Dirección</h3>
+            <p>Calle 44 Nº 49B-90<br>Bello, Antioquia<br>Colombia</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
-<script src="js/data.js"></script>
-<script src="js/app.js"></script>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>Hospital Marco Fidel Suárez</h4>
+      <p>Empresa Social del Estado de carácter departamental. Institución Prestadora de Salud de mediana y alta complejidad. NIT: 890.985.703-1.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Enlaces</h4>
+      <p><a href="https://www.hmfs.gov.co" target="_blank" rel="noopener">Sitio web oficial</a></p>
+      <p><a href="https://www.hmfs.gov.co/transparencia/" target="_blank" rel="noopener">Transparencia</a></p>
+      <p><a href="https://www.hmfs.gov.co/atencion-al-ciudadano/gestion-de-pqrs-f/" target="_blank" rel="noopener">PQRS</a></p>
+      <p><a href="https://www.hmfs.gov.co/servicio/procesos-de-apoyo/" target="_blank" rel="noopener">Trámites</a></p>
+    </div>
+    <div class="footer-col">
+      <h4>Redes sociales</h4>
+      <p style="margin-bottom:12px">Seguinos para estar al día con noticias y servicios.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/hospitalmfs/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2zm.2 2C5.6 4 4 5.6 4 8v8c0 2.4 1.6 4 4 4h8c2.4 0 4-1.6 4-4V8c0-2.4-1.6-4-4-4H8zm9 1.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM12 7c2.8 0 5 2.2 5 5s-2.2 5-5 5-5-2.2-5-5 2.2-5 5-5zm0 2c-1.7 0-3 1.3-3 3s1.3 3 3 3 3-1.3 3-3-1.3-3-3-3z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/hospitalmfs/" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M14 13.5h2.5l1-4H14v-2c0-1 0-2 2-2h1.5V2.1c-.3 0-1.2-.1-2.4-.1-2.5 0-4.1 1.5-4.1 4.2v2.3H8.5v4h2.5v10H14v-10z"/></svg>
+        </a>
+        <a href="https://twitter.com/HospitalMFS" target="_blank" rel="noopener" aria-label="Twitter">
+          <svg viewBox="0 0 24 24"><path d="M18.2 1.9h3.5l-7.7 8.8L23 22.1h-7.1l-5.5-7.2-6.3 7.2H.5l8.2-9.4L1 1.9h7.3l5 6.6 4.9-6.6zm-1.2 18.2h2L6.9 3.9H4.7l12.3 16.2z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 ESE Hospital Marco Fidel Suárez. Todos los derechos reservados.</span>
+    <span>Vigilado por la Superintendencia Nacional de Salud</span>
+  </div>
+</footer>
+
+<!-- QR Code library (embedded) -->
+<script>
+(function(){
+  var QRCode;!function(){function a(a){this.mode=c.MODE_8BIT_BYTE,this.data=a,this.parsedData=[];for(var b=[],d=0,e=this.data.length;e>d;d++){var f=this.data.charCodeAt(d);f>65536?(b[0]=240|(1835008&f)>>>18,b[1]=128|(258048&f)>>>12,b[2]=128|(4032&f)>>>6,b[3]=128|63&f):f>2048?(b[0]=224|(61440&f)>>>12,b[1]=128|(4032&f)>>>6,b[2]=128|63&f):f>128?(b[0]=192|(1984&f)>>>6,b[1]=128|63&f):b[0]=f,this.parsedData.push(b)}this.parsedData=Array.prototype.concat.apply([],this.parsedData),this.parsedData.length!=this.data.length&&(this.parsedData.unshift(191),this.parsedData.unshift(187),this.parsedData.unshift(239))}function b(a,b){this.typeNumber=a,this.errorCorrectLevel=b,this.modules=null,this.moduleCount=0,this.dataCache=null,this.dataList=[]}a.prototype={getLength:function(a){return this.parsedData.length},write:function(a){for(var b=0,c=this.parsedData.length;c>b;b++)a.put(this.parsedData[b],8)}},b.prototype={addData:function(b){var c=new a(b);this.dataList.push(c),this.dataCache=null},isDark:function(a,b){if(0>a||this.moduleCount<=a||0>b||this.moduleCount<=b)throw new Error(a+","+b);return this.modules[a][b]},getModuleCount:function(){return this.moduleCount},make:function(){this.makeImpl(!1,this.getBestMaskPattern())},makeImpl:function(a,c){this.moduleCount=4*this.typeNumber+17,this.modules=new Array(this.moduleCount);for(var d=0;d<this.moduleCount;d++){this.modules[d]=new Array(this.moduleCount);for(var e=0;e<this.moduleCount;e++)this.modules[d][e]=null}this.setupPositionProbePattern(0,0),this.setupPositionProbePattern(this.moduleCount-7,0),this.setupPositionProbePattern(0,this.moduleCount-7),this.setupPositionAdjustPattern(),this.setupTimingPattern(),this.setupTypeInfo(a,c),this.typeNumber>=7&&this.setupTypeNumber(a),null==this.dataCache&&(this.dataCache=b.createData(this.typeNumber,this.errorCorrectLevel,this.dataList)),this.mapData(this.dataCache,c)},setupPositionProbePattern:function(a,b){for(var c=-1;7>=c;c++)if(!(-1>=a+c||this.moduleCount<=a+c))for(var d=-1;7>=d;d++)-1>=b+d||this.moduleCount<=b+d||(this.modules[a+c][b+d]=c>=0&&6>=c&&(0==d||6==d)||d>=0&&6>=d&&(0==c||6==c)||c>=2&&4>=c&&d>=2&&4>=d?!0:!1)},getBestMaskPattern:function(){for(var a=0,b=0,c=0;8>c;c++){this.makeImpl(!0,c);var d=g.getLostPoint(this);(0==c||a>d)&&(a=d,b=c)}return b},createMovieClip:function(a,b,c){var d=a.createEmptyMovieClip(b,c),e=1;this.make();for(var f=0;f<this.modules.length;f++)for(var h=f*e,g=0;g<this.modules[f].length;g++){var i=g*e,j=this.modules[f][g];j&&(d.beginFill(0,100),d.moveTo(i,h),d.lineTo(i+e,h),d.lineTo(i+e,h+e),d.lineTo(i,h+e),d.endFill())}return d},setupTimingPattern:function(){for(var a=8;a<this.moduleCount-8;a++)null==this.modules[a][6]&&(this.modules[a][6]=a%2==0);for(var b=8;b<this.moduleCount-8;b++)null==this.modules[6][b]&&(this.modules[6][b]=b%2==0)},setupPositionAdjustPattern:function(){for(var a=g.getPatternPosition(this.typeNumber),b=0;b<a.length;b++)for(var c=0;c<a.length;c++){var d=a[b],e=a[c];if(null==this.modules[d][e])for(var f=-2;2>=f;f++)for(var h=-2;2>=h;h++)this.modules[d+f][e+h]=-2==f||2==f||-2==h||2==h||0==f&&0==h?!0:!1}},setupTypeNumber:function(a){for(var b=g.getBCHTypeNumber(this.typeNumber),c=0;18>c;c++){var d=!a&&1==(1&b>>c);this.modules[Math.floor(c/3)][c%3+this.moduleCount-8-3]=d}for(var c=0;18>c;c++){var d=!a&&1==(1&b>>c);this.modules[c%3+this.moduleCount-8-3][Math.floor(c/3)]=d}},setupTypeInfo:function(a,b){for(var c=this.errorCorrectLevel<<3|b,d=g.getBCHTypeInfo(c),e=0;15>e;e++){var f=!a&&1==(1&d>>e);6>e?this.modules[8][e+(this.moduleCount-8-6)-1]=f:8>e?this.modules[8][8+(this.moduleCount-8-8)-e-1]=f:this.modules[this.moduleCount-8-(15-e)][8]=f}for(var e=0;15>e;e++){var f=!a&&1==(1&d>>e);8>e?this.modules[e+(this.moduleCount-8-8)-1][8]=f:9>e?this.modules[8][15-e-1+8-3+1-1]=f:this.modules[8][15-e-1]=f}this.modules[this.moduleCount-8][8]=!a},mapData:function(a,b){for(var c=-1,d=this.moduleCount-1,e=7,f=0,h=this.moduleCount-1;h>0;h-=2)for(6==h&&h--;;){for(var g=0;2>g;g++)if(null==this.modules[d][h-g]){var i=!1;f<a.length&&(i=1==(1&a[f]>>>e));var j=g.getMask(b,d,h-g);j&&(i=!i),this.modules[d][h-g]=i,e--,-1==e&&(f++,e=7)}if(d+=c,0>d||this.moduleCount<=d){d-=c,c=-c;break}}}};var c={MODE_NUMBER:1,MODE_ALPHA_NUM:2,MODE_8BIT_BYTE:4,MODE_KANJI:8},d={L:1,M:0,Q:3,H:2},e={PATTERN000:0,PATTERN001:1,PATTERN010:2,PATTERN011:3,PATTERN100:4,PATTERN101:5,PATTERN110:6,PATTERN111:7},f=function(){function a(a){return String(a).replace(/#/g,"")}var b=1,c=2,d=3,e=4,f=5,h=6,g=7,i={info:function(){this.errorCorrectLevels=[{bits:"",displayName:"Low"},]}},j=function(){function b(a){this.buffer=[],this.length=0}return b.prototype={get:function(a){var b=Math.floor(a/8);return 1==(1&this.buffer[b]>>>7-a%8)},put:function(a,b){for(var c=0;b>c;c++)this.putBit(1==(1&a>>>b-c-1))},getLengthInBits:function(){return this.length},putBit:function(a){var b=Math.floor(this.length/8);this.buffer.length<=b&&this.buffer.push(0),a&&(this.buffer[b]|=128>>>this.length%8),this.length++}},b}(),k=function(){function a(){this.rsBlocks=[],this.totalDataCount=0,this.totalECCount=0}return a.prototype={getRSBlocks:function(){var a=this.rsBlocks.length;if(0==a)throw"no rs block";return this.rsBlocks},getTotalDataCount:function(){return this.totalDataCount},getTotalECCount:function(){return this.totalECCount},addData:function(a,b,c,d,e,f){var g={totalCount:a,dataCount:b};this.rsBlocks.push(g),this.totalDataCount+=b,this.totalECCount+=a-b}},a}(),l=function(){function a(a,b){this.typeNumber=a,this.errorCorrectLevel=b,this.dataList=[],this.rsBlocks=[],this.totalDataCount=0,this.totalECCount=0,this.cachedData=null}return a.prototype={getRSBlocks:function(){return this.rsBlocks},getTotalDataCount:function(){return 0==this.totalDataCount?0:this.totalDataCount},getTotalECCount:function(){return this.totalECCount},addData:function(a){this.dataList.push(a),this.cachedData=null},make:function(){if(this.cachedData)return;this.cachedData=!0;var a=this.typeNumber,b=this.errorCorrectLevel,d=[],e=[],h=[],i=[],j=this.dataList.slice(),k=a,m=b,o=g.getRSBlocks(k,m),p=new l,q=0;for(var r=0;r<j.length;r++)p.addData(j[r]);p.make();for(var r=0;r<o.length;r++){var s=o[r];d.push(s.totalCount),e.push(s.dataCount)}for(var r=0;r<p.dataList.length;r++){var t=p.dataList[r];h.push(t.mode),i.push(t.getLength()),q+=h[h.length-1]==c.MODE_8BIT_BYTE?t.data.length:0}for(var u=4*a+17,v=function(){for(var a=0,b=0;b<e.length;b++)a+=e[b];return a}(),w=0,x=function(){var a=0;for(var b=1;b<=40;b++){var c=g.getCharCountIndicator(h[0],b);if(b>=d[0])return a=c;if(!(b>=e[0]&&0==v))return a=c}return a}(),y=function(a,b,c){for(var d=[],e=0;c>e;e++)d.push(a);return d}(0,0,8),z=function(){var a=q+x+y.length*8-v;if(!(a>=0))return a;for(var b=0;4>b&&!(a>=0);b++){var c={0:1,1:1,2:2,3:1,4:1}[b]||0;y.push.apply(y,function(a,b){for(var c=[],d=0;b>d;d++)c.push(a);return c}(0,c)),a-=8}return a}(),A=j.length>=3?0:j.length-1,B=!0;;){if(function(){var a=0;for(var b=0;b<d.length;b++)a+=d[b];return a}()==f.getLengthInBits())break;var C=j.length>=3?j[A].data.length:0,D=function(a,b){for(var c=0;b>c;c++)a.push({mode:null});return a}([],u-f.getLengthInBits()),E=j[A].mode,F=j[A].data;if(j.length>=3){y.push.apply(y,function(a,b){for(var c=[],d=0;b>d;d++)c.push(a);return c}(E,4)),y.push.apply(y,function(a,b){for(var c=[],d=0;b>d;d++)c.push(a);return c}(C,8));for(var r=0;r<C;r++)y.push.apply(y,function(a,b){for(var c=[],d=0;b>d;d++)c.push(a);return c}(F[r],8))}if(z>=0){C=Math.min(C,z);var G=j.length>=3?j[A]:j[0];E=G.mode,F=j.length>=3?G.data.slice(0,C):G.data,z=-1;var H=j.length>=3;H?y.push.apply(y,function(a,b){for(var c=[],d=0;b>d;d++)c.push(a);return c}(function(a){switch(a){case c.MODE_NUMBER:return 1;case c.MODE_ALPHA_NUM:return 2;case c.MODE_8BIT_BYTE:return 4;case c.MODE_KANJI:return 8;default:throw"mode:"+a}}(E),4)):y.push(0,0,0,0),y.push.apply(y,function(a,b){for(var c=[],d=0;b>d;d++)c.push(a);return c}(C,8));for(var r=0;r<C;r++)y.push.apply(y,function(a,b){for(var c=[],d=0;b>d;d++)c.push(a);return c}(F[r],8))}if(H)break;if(++A>=j.length)A=0}var I=function(a){for(var b=[],c=0;c<a.length;){var d=a[c];if(d==c.MODE_8BIT_BYTE){var e=a[c+2],f=7+e+g.getCharCountIndicator(d,e)+a[c+1]+8*e;b.push({mode:d,data:a[c+3],count:e}),c+=f}else b.push({mode:d,data:a[c+1]});c++}return b}(function(){var a=[],b=0,c=0;for(var d=0;d<y.length;d++){var e=0;switch(y[d]){case 0:e=0;break;case 1:e=1;break;case 2:case 3:e=3-y[d];break;case 4:e=4;break;case 8:e=8;break;default:throw"mode:"+y[d]}if(e!=b){if(b!=0&&(a.push(b),a.push(c),b==c.MODE_8BIT_BYTE)){a.push(8);var f=Math.floor(c/256),h=c%256;a.push(f),a.push(h)}b=e,c=0}b==c.MODE_8BIT_BYTE?c++:c++}if(b!=0&&(a.push(b),a.push(c),b==c.MODE_8BIT_BYTE)){var f=Math.floor(c/256),h=c%256;a.push(f),a.push(h)}return a}());b=new b;for(var r=0;r<I.length;r++)if(I[r].mode==c.MODE_8BIT_BYTE)b.put(I[r].mode,4),b.put(I[r].count,g.getCharCountIndicator(I[r].mode,a));else{if(I[r].mode==c.MODE_KANJI&&(I[r].mode=c.MODE_8BIT_BYTE),0==I[r].mode)break;b.put(I[r].mode,4),b.put(I[r].count,g.getCharCountIndicator(I[r].mode,a))}for(var r=0;r<I.length;r++)if(I[r].mode==c.MODE_8BIT_BYTE){g.putData(I[r].data,b);break}for(var r=0;r<b.getLengthInBits();r++)f.putBit(b.get(r));for(;;){var J=new b;f.getLengthInBits()>=u||J.put(0,4),J.put(236,8),f.getLengthInBits()<u&&J.put(17,8);var K=g.createBytes(J,d);if(K)break}var L=[];for(var r=0;r<j.length;r++){var M=j[r].mode;L.push(M),L.push(j[r].data.length)}for(var r=0;r<L.length;r++)for(var C=L[r],N=0;N<C;N++);return g.createBytes(f,d)}},a}();!function(){function a(a,b,c){this.x=a,this.y=b,this.count=1,this.darkCount=0,c||this.incrementDark()}a.prototype={increment:function(){this.count++},incrementDark:function(){this.darkCount++,this.count++}};var b=function(){function b(){}return b.prototype={getPatternPosition:function(a){return g.getPatternPosition(a)},getLostPoint:function(a){for(var b=a.getModuleCount(),c=0,d=0;b>d;d++)for(var e=0;b>e;e++){for(var f=0,h=a.isDark(d,e),i=-1;1>=i;i++)if(!(0>d+i||d+i>=b))for(var j=-1;1>=j;j++)0>e+j||e+j>=b||(0!=i||0!=j)&&h==a.isDark(d+i,e+j)&&f++;f>5&&(c+=3+f-5)}for(var d=0;b-1>d;d++)for(var e=0;b-1>e;e++){var k=0;a.isDark(d,e)&&k++,a.isDark(d+1,e)&&k++,a.isDark(d,e+1)&&k++,a.isDark(d+1,e+1)&&k++,(0==k||4==k)&&(c+=3)}for(var d=0;b>d;d++)for(var e=0;b-6>e;e++)a.isDark(d,e)&&!a.isDark(d,e+1)&&a.isDark(d,e+2)&&a.isDark(d,e+3)&&a.isDark(d,e+4)&&!a.isDark(d,e+5)&&a.isDark(d,e+6)&&(c+=40);for(var e=0;b>e;e++)for(var d=0;b-6>d;d++)a.isDark(d,e)&&!a.isDark(d+1,e)&&a.isDark(d+2,e)&&a.isDark(d+3,e)&&a.isDark(d+4,e)&&!a.isDark(d+5,e)&&a.isDark(d+6,e)&&(c+=40);for(var l=0,e=0;b>e;e++)for(var d=0;b>d;d++)a.isDark(d,e)&&l++;var m=Math.abs(100*l/b/b-50)/5;return c+=10*m}}}(),c=function(){function b(){this.dataCount=[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],this.totalDataCount=[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],this.totalECCount=[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]]}return b.prototype={addDataCount:function(a,b,c){this.dataCount[a][b]=c},addTotalDataCount:function(a,b){this.totalDataCount[a][b]=b},addTotalECCount:function(a,b){this.totalECCount[a][b]=b},getDataCount:function(a,b){return this.dataCount[a][b]},getTotalDataCount:function(a,b){return this.totalDataCount[a][b]},getTotalECCount:function(a,b){return this.totalECCount[a][b]}},b}();var d=[26,44,70,100,134,172,196,240],f=function(){function a(){this.cache={}}return a.prototype={getData:function(a,b,c){function d(a,b){e.getData(a,b,c)}var e=this,f=a+":"+b;if(void 0==this.cache[f]){this.cache[f]=new l(a,b);for(var g=0;g<c.length;g++)this.cache[f].addData(c[g]);this.cache[f].make()}return this.cache[f]}},a}(),h=function(){function a(){this.buffer=[],this.length=0}return a.prototype={get:function(a){var b=Math.floor(a/8);return 1==(1&this.buffer[b]>>>7-a%8)},put:function(a,b){for(var c=0;b>c;c++)this.putBit(1==(1&a>>>b-c-1))},getLengthInBits:function(){return this.length},putBit:function(a){var b=Math.floor(this.length/8);this.buffer.length<=b&&this.buffer.push(0),a&&(this.buffer[b]|=128>>>this.length%8),this.length++}},a}(),i=function(){function a(){this.dataList=[],this.dataCache=null}return a.prototype={addData:function(a){this.dataList.push(new j(a)),this.dataCache=null},isDark:function(a,b){if(0>a||this.moduleCount<=a||0>b||this.moduleCount<=b)throw new Error(a+","+b);return this.modules[a][b]},getModuleCount:function(){return this.moduleCount},make:function(){this.makeImpl(!1,this.getBestMaskPattern())},makeImpl:function(a,c){this.moduleCount=4*this.typeNumber+17,this.modules=new Array(this.moduleCount);for(var d=0;d<this.moduleCount;d++){this.modules[d]=new Array(this.moduleCount);for(var e=0;e<this.moduleCount;e++)this.modules[d][e]=null}this.setupPositionProbePattern(0,0),this.setupPositionProbePattern(this.moduleCount-7,0),this.setupPositionProbePattern(0,this.moduleCount-7),this.setupPositionAdjustPattern(),this.setupTimingPattern(),this.setupTypeInfo(a,c),this.typeNumber>=7&&this.setupTypeNumber(a),null==this.dataCache&&(this.dataCache=a.createData(this.typeNumber,this.errorCorrectLevel,this.dataList)),this.mapData(this.dataCache,c)},setupPositionProbePattern:function(a,b){for(var c=-1;7>=c;c++)if(!(-1>=a+c||this.moduleCount<=a+c))for(var d=-1;7>=d;d++)-1>=b+d||this.moduleCount<=b+d||(this.modules[a+c][b+d]=c>=0&&6>=c&&(0==d||6==d)||d>=0&&6>=d&&(0==c||6==c)||c>=2&&4>=c&&d>=2&&4>=d?!0:!1)},getBestMaskPattern:function(){for(var a=0,b=0,c=0;8>c;c++){this.makeImpl(!0,c);var d=b.getLostPoint(this);(0==c||a>d)&&(a=d,b=c)}return b},createMovieClip:function(a,b,c){var d=a.createEmptyMovieClip(b,c),e=1;this.make();for(var f=0;f<this.modules.length;f++)for(var h=f*e,g=0;g<this.modules[f].length;g++){var i=g*e,j=this.modules[f][g];j&&(d.beginFill(0,100),d.moveTo(i,h),d.lineTo(i+e,h),d.lineTo(i+e,h+e),d.lineTo(i,h+e),d.endFill())}return d},setupTimingPattern:function(){for(var a=8;a<this.moduleCount-8;a++)null==this.modules[a][6]&&(this.modules[a][6]=a%2==0);for(var b=8;b<this.moduleCount-8;b++)null==this.modules[6][b]&&(this.modules[6][b]=b%2==0)},setupPositionAdjustPattern:function(){for(var a=b.getPatternPosition(this.typeNumber),c=0;c<a.length;c++)for(var d=0;d<a.length;d++){var e=a[c],f=a[d];if(null==this.modules[e][f])for(var g=-2;2>=g;g++)for(var h=-2;2>=h;h++)this.modules[e+g][f+h]=-2==g||2==g||-2==h||2==h||0==g&&0==h?!0:!1}},setupTypeNumber:function(a){for(var c=b.getBCHTypeNumber(this.typeNumber),d=0;18>d;d++){var e=!a&&1==(1&c>>d);this.modules[Math.floor(d/3)][d%3+this.moduleCount-8-3]=e}for(var d=0;18>d;d++){var e=!a&&1==(1&c>>d);this.modules[d%3+this.moduleCount-8-3][Math.floor(d/3)]=e}},setupTypeInfo:function(a,c){for(var d=this.errorCorrectLevel<<3|c,e=b.getBCHTypeInfo(d),f=0;15>f;f++){var g=!a&&1==(1&e>>f);6>f?this.modules[8][f+(this.moduleCount-8-6)-1]=g:8>f?this.modules[8][8+(this.moduleCount-8-8)-f-1]=g:this.modules[this.moduleCount-8-(15-f)][8]=g}for(var f=0;15>f;f++){var g=!a&&1==(1&e>>f);8>f?this.modules[f+(this.moduleCount-8-8)-1][8]=g:9>f?this.modules[8][15-f-1+8-3+1-1]=g:this.modules[8][15-f-1]=g}this.modules[this.moduleCount-8][8]=!a},mapData:function(a,b){for(var c=-1,d=this.moduleCount-1,e=7,f=0,g=this.moduleCount-1;g>0;g-=2)for(6==g&&g--;;){for(var h=0;2>h;h++)if(null==this.modules[d][g-h]){var i=!1;f<a.length&&(i=1==(1&a[f]>>>e));var j=b.getMask(b,d,g-h);j&&(i=!i),this.modules[d][g-h]=i,e--,-1==e&&(f++,e=7)}if(d+=c,0>d||this.moduleCount<=d){d-=c,c=-c;break}}}},a.PAD0=236,a.PAD1=17,a.createData=function(b,c,d){for(var e=c,f=j.getRSBlocks(b,e),h=new k,i=0;i<d.length;i++){var l=d[i];h.put(l.getMode(),4),h.put(l.getLength(),j.getCharCountIndicator(l.getMode(),b)),l.write(h)}var m=0;if(m=j.getTotalDataCount(b,e),h.getLengthInBits()>8*m)throw new Error("code length overflow. ("+h.getLengthInBits()+">"+8*m+")");for(h.getLengthInBits()+4<=8*m&&h.put(0,4);h.getLengthInBits()%8!=0;)h.putBit(0);for(;;){if(h.getLengthInBits()>=8*m)break;if(h.put(a.PAD0,8),h.getLengthInBits()>=8*m)break;h.put(a.PAD1,8)}return a.createBytes(h,f)},a.createBytes=function(b,d){for(var e=0,f=0,g=0,h=new Array(d.length),i=new Array(d.length),j=0;j<d.length;j++){var k=d[j].dataCount,l=d[j].totalCount-k;f=Math.max(f,k),g=Math.max(g,l),h[j]=new Array(k);for(var m=0;m<h[j].length;m++)h[j][m]=255&b.buffer[m+e];e+=k;var n=j.getErrorCorrectPolynomial(l),o=new o(h[j],n.getLength()-1),p=o.mod(n);i[j]=new Array(n.getLength()-1);for(var m=0;m<i[j].length;m++){var q=m+p.getLength()-i[j].length;i[j][m]=q>=0?p.get(q):0}}for(var r=0,m=0;m<d.length;m++)r+=d[m].totalCount;for(var s=new Array(r),t=0,m=0;f>m;m++)for(var j=0;j<d.length;j++)m<h[j].length&&(s[t++]=h[j][m]);for(var m=0;g>m;m++)for(var j=0;j<d.length;j++)m<i[j].length&&(s[t++]=i[j][m]);return s};var j=function(){function a(a){var b=0;for(;b<a.length;){var c=a[b];if(1==c){b++;var d=a[b];b++;var e=a[b];b++;for(var f="",g=0;d>g;g++){var h=a[b];f+=String.fromCharCode(h),b++}b+=e}else break}return f}var b=[16,10,9,8,8,8,8,8,8,8,7,6,6,5,5,5,4,4,4,3,3,3,3,3,3,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2],c=[19,16,13,9,34,28,22,13,44,34,26,18,58,44,33,24,64,48,36,26,86,62,46,34,106,76,58,42,124,88,66,48,144,106,78,58,168,128,96,68,188,148,112,78,224,176,130,88,260,208,156,106,296,236,176,122,332,264,196,134,360,294,226,148,396,328,258,164,436,364,290,182,478,402,324,202,526,444,360,226,582,500,400,246,644,556,444,270,708,604,486,300,778,658,528,326,854,722,590,356],d=[7,12,18,22,36,44,64,84,112,140,176,220,272,330,380,450,532,616,710,812,924,1030,1154,1286,1456,1648,1846,2064,2304,2564,2824,3106,3404,3712,4038,4378,4736,5104,5492,5892,6310,6740,7186,7654,8132],e=[0,1,1,1,1,1,2,2,2,2,4,4,4,4,4,4,4,4,5,5,6,6,7,8,9,9,10,10,12,12,14,14,14,14,14,14,14,14,14,14,14,14,15,15],f=[[],[6,18],[6,22],[6,26],[6,30],[6,34],[6,22,38],[6,24,42],[6,26,46],[6,28,50],[6,30,54],[6,32,58],[6,34,62],[6,26,46,66],[6,26,48,70],[6,26,50,74],[6,30,54,78],[6,30,56,82],[6,30,58,86],[6,34,62,90],[6,28,50,72,94],[6,26,50,74,98],[6,30,54,78,102],[6,28,54,80,106],[6,32,58,84,110],[6,30,58,86,114],[6,34,62,90,118],[6,26,50,74,98,122],[6,30,54,78,102,126],[6,26,52,78,104,130],[6,30,56,82,108,134],[6,34,60,86,112,138],[6,30,58,86,114,142],[6,34,62,90,118,146],[6,30,54,78,102,126,150],[6,24,50,76,102,128,154],[6,28,54,80,106,132,158],[6,32,58,84,110,136,162],[6,26,54,82,110,138,166],[6,30,58,86,114,142,170]],g=function(){function a(a,b){this.typeNumber=a,this.alignmentPattern=b,this.dataCount=0,this.totalDataCount=0,this.modules=[],this.moduleCount=0,this.dataCache=null,this.rsBlocks=[],this.totalECCount=0}return a.prototype={getModuleCount:function(){return this.moduleCount},getRSBlocks:function(){return this.rsBlocks},getTotalDataCount:function(){return this.totalDataCount},getTotalECCount:function(){return this.totalECCount},getDataCount:function(){return this.dataCount},addData:function(a){if(this.dataList.push(a),this.dataCache=null,this.dataList.length>1)throw"can only add one data";return this},make:function(){this.dataCache&&(this.dataCache=null);var a=new i(this.typeNumber,this.errorCorrectLevel,this.dataList);this.moduleCount=a.getModuleCount(),this.modules=a.modules,this.dataCache=a.dataCache,this.totalDataCount=a.getTotalDataCount(),this.totalECCount=a.getTotalECCount(),this.rsBlocks=a.getRSBlocks()},isDark:function(a,b){return this.modules[a][b]},getAlignmentPattern:function(){return this.alignmentPattern},getTypeNumber:function(){return this.typeNumber}},a}(),h=function(){function a(a,b){this.typeNumber=a,this.errorCorrectLevel=b,this.module=null,this.moduleCount=0,this.dataCache=null,this.dataList=[]}return a.prototype={addData:function(a){var b=new c(a);return this.dataList.push(b),this.dataCache=null,this},isDark:function(a,b){if(0>a||this.moduleCount<=a||0>b||this.moduleCount<=b)throw new Error(a+","+b);return this.module[a][b]},getModuleCount:function(){return this.moduleCount},make:function(){if(this.typeNumber<1){var a=1;for(a=1;40>a;a++){for(var c=j.getRSBlocks(a,this.errorCorrectLevel),d=new i,e=0,f=0;f<c.length;f++){var g=c[f];d.put(g.getMode(),4),d.put(g.getLengthInBits(),j.getCharCountIndicator(g.getMode(),a)),g.write(d)}var h=j.getTotalDataCount(a,this.errorCorrectLevel);if(d.getLengthInBits()<=8*h)break}this.typeNumber=a}this.makeImpl(!1,this.getBestMaskPattern())},makeImpl:function(a,b){this.moduleCount=4*this.typeNumber+17,this.module=new Array(this.moduleCount);for(var c=0;c<this.moduleCount;c++){this.module[c]=new Array(this.moduleCount);for(var d=0;d<this.moduleCount;d++)this.module[c][d]=null}this.setupPositionProbePattern(0,0),this.setupPositionProbePattern(this.moduleCount-7,0),this.setupPositionProbePattern(0,this.moduleCount-7),this.setupPositionAdjustPattern(),this.setupTimingPattern(),this.setupTypeInfo(a,b),this.typeNumber>=7&&this.setupTypeNumber(a),null==this.dataCache&&(this.dataCache=j.createData(this.typeNumber,this.errorCorrectLevel,this.dataList)),this.mapData(this.dataCache,b)},setupPositionProbePattern:function(a,b){for(var c=-1;7>=c;c++)if(!(-1>=a+c||this.moduleCount<=a+c))for(var d=-1;7>=d;d++)-1>=b+d||this.moduleCount<=b+d||(this.module[a+c][b+d]=c>=0&&6>=c&&(0==d||6==d)||d>=0&&6>=d&&(0==c||6==c)||c>=2&&4>=c&&d>=2&&4>=d?!0:!1)},getBestMaskPattern:function(){for(var a=0,b=0,c=0;8>c;c++){this.makeImpl(!0,c);var d=j.getLostPoint(this);(0==c||a>d)&&(a=d,b=c)}return b},setupTimingPattern:function(){for(var a=8;a<this.moduleCount-8;a++)null==this.module[a][6]&&(this.module[a][6]=a%2==0);for(var b=8;b<this.moduleCount-8;b++)null==this.module[6][b]&&(this.module[6][b]=b%2==0)},setupPositionAdjustPattern:function(){for(var a=j.getPatternPosition(this.typeNumber),b=0;b<a.length;b++)for(var c=0;c<a.length;c++){var d=a[b],e=a[c];if(null==this.module[d][e])for(var f=-2;2>=f;f++)for(var g=-2;2>=g;g++)this.module[d+f][e+g]=-2==f||2==f||-2==g||2==g||0==f&&0==g?!0:!1}},setupTypeNumber:function(a){for(var b=j.getBCHTypeNumber(this.typeNumber),c=0;18>c;c++){var d=!a&&1==(1&b>>c);this.module[Math.floor(c/3)][c%3+this.moduleCount-8-3]=d}for(var c=0;18>c;c++){var d=!a&&1==(1&b>>c);this.module[c%3+this.moduleCount-8-3][Math.floor(c/3)]=d}},setupTypeInfo:function(a,b){for(var c=this.errorCorrectLevel<<3|b,d=j.getBCHTypeInfo(c),e=0;15>e;e++){var f=!a&&1==(1&d>>e);6>e?this.module[8][e+(this.moduleCount-8-6)-1]=f:8>e?this.module[8][8+(this.moduleCount-8-8)-e-1]=f:this.module[this.moduleCount-8-(15-e)][8]=f}for(var e=0;15>e;e++){var f=!a&&1==(1&d>>e);8>e?this.module[e+(this.moduleCount-8-8)-1][8]=f:9>e?this.module[8][15-e-1+8-3+1-1]=f:this.module[8][15-e-1]=f}this.module[this.moduleCount-8][8]=!a},mapData:function(a,b){for(var c=-1,d=this.moduleCount-1,e=7,f=0,g=this.moduleCount-1;g>0;g-=2)for(6==g&&g--;;){for(var h=0;2>h;h++)if(null==this.module[d][g-h]){var i=!1;f<a.length&&(i=1==(1&a[f]>>>e));var k=j.getMask(b,d,g-h);k&&(i=!i),this.module[d][g-h]=i,e--,-1==e&&(f++,e=7)}if(d+=c,0>d||this.moduleCount<=d){d-=c,c=-c;break}}}},a.PAD0=236,a.PAD1=17,a.createData=function(b,c,d){for(var e=j.getRSBlocks(b,c),f=new i,g=0;g<d.length;g++){var h=d[g];f.put(h.getMode(),4),f.put(h.getLength(),j.getCharCountIndicator(h.getMode(),b)),h.write(f)}var k=0;if(k=j.getTotalDataCount(b,c),f.getLengthInBits()>8*k)throw new Error("code length overflow. ("+f.getLengthInBits()+">"+8*k+")");for(f.getLengthInBits()+4<=8*k&&f.put(0,4);f.getLengthInBits()%8!=0;)f.putBit(0);for(;;){if(f.getLengthInBits()>=8*k)break;if(f.put(a.PAD0,8),f.getLengthInBits()>=8*k)break;f.put(a.PAD1,8)}return a.createBytes(f,e)},a.createBytes=function(a,b){for(var c=0,d=0,e=0,f=new Array(b.length),g=new Array(b.length),h=0;h<b.length;h++){var i=b[h].dataCount,j=b[h].totalCount-i;d=Math.max(d,i),e=Math.max(e,j),f[h]=new Array(i);for(var k=0;k<f[h].length;k++)f[h][k]=255&a.buffer[k+c];c+=i;var l=j.getErrorCorrectPolynomial(j),m=new o(f[h],l.getLength()-1),n=m.mod(l);g[h]=new Array(l.getLength()-1);for(var k=0;k<g[h].length;k++){var p=k+n.getLength()-g[h].length;g[h][k]=p>=0?n.get(p):0}}for(var q=0,k=0;k<b.length;k++)q+=b[k].totalCount;for(var r=new Array(q),s=0,k=0;d>k;k++)for(var h=0;h<b.length;h++)k<f[h].length&&(r[s++]=f[h][k]);for(var k=0;e>k;k++)for(var h=0;h<b.length;h++)k<g[h].length&&(r[s++]=g[h][k]);return r};var i=function(){function a(){this.buffer=[],this.length=0}return a.prototype={get:function(a){var b=Math.floor(a/8);return 1==(1&this.buffer[b]>>>7-a%8)},put:function(a,b){for(var c=0;b>c;c++)this.putBit(1==(1&a>>>b-c-1))},getLengthInBits:function(){return this.length},putBit:function(a){var b=Math.floor(this.length/8);this.buffer.length<=b&&this.buffer.push(0),a&&(this.buffer[b]|=128>>>this.length%8),this.length++}},a}(),j={};j.getCharCountIndicator=function(a,b){if(a==c.MODE_8BIT_BYTE)return 8;if(a==c.MODE_KANJI)return 8;if(b>=1&&10>b)return a==c.MODE_NUMBER?10:9;if(27>b)return a==c.MODE_NUMBER?12:11;if(b>=27)return a==c.MODE_NUMBER?14:13;throw new Error("typeNumber:"+b)},j.getBCHTypeInfo=function(a){for(var b=a<<10;j.getBCHDigit(b)-j.getBCHDigit(1335)>=0;)b^=1335<<j.getBCHDigit(b)-j.getBCHDigit(1335);return(a<<10|b)^21522},j.getBCHTypeNumber=function(a){for(var b=a<<12;j.getBCHDigit(b)-j.getBCHDigit(7973)>=0;)b^=7973<<j.getBCHDigit(b)-j.getBCHDigit(7973);return a<<12|b},j.getBCHDigit=function(a){for(var b=0;0!=a;)b++,a>>>=1;return b},j.getPatternPosition=function(a){return f[a-1]},j.getMask=function(a,b,c){switch(a){case e.PATTERN000:return(b+c)%2==0;case e.PATTERN001:return b%2==0;case e.PATTERN010:return c%3==0;case e.PATTERN011:return(b+c)%3==0;case e.PATTERN100:return(Math.floor(b/2)+Math.floor(c/3))%2==0;case e.PATTERN101:return b*c%2+b*c%3==0;case e.PATTERN110:return(b*c%2+b*c%3)%2==0;case e.PATTERN111:return(b*c%3+(b+c)%2)%2==0;default:throw new Error("bad maskPattern:"+a)}},j.getErrorCorrectPolynomial=function(a){for(var b=new o([1],0),c=0;a>c;c++)b=b.multiply(new o([1,n.gexp(c)],0));return b},j.stringToBytes=function(a){for(var b=[],c=0;c<a.length;c++){var d=a.charCodeAt(c);b.push(255&d)}return b};var k=function(){function a(){this.rsBlock=[],this.totalDataCount=0,this.totalECCount=0}return a.prototype={getRSBlocks:function(){return this.rsBlock},getTotalDataCount:function(){return this.totalDataCount},getTotalECCount:function(){return this.totalECCount}},a}(),l=function(){function a(a,b){this.typeNumber=a,this.dataCount=0,this.totalECCount=0,this.rsBlocks=[],this.totalDataCount=0}return a.prototype={getRSBlocks:function(){return this.rsBlocks},getTotalDataCount:function(){return this.totalDataCount},getTotalECCount:function(){return this.totalECCount},getDataCount:function(){return this.dataCount}},a}(),m=function(a){function b(a){return a.length}return function(c,d){var e={},f=c.a,g=c.b,h=c.c,i=c.d;e.a=Math.round(a*a),e.b=Math.round(a*b),e.c=Math.round(a*g),e.d=Math.round(a*h),e.e=Math.round(a*i),e.f=Math.round(b*b),e.g=Math.round(b*g),e.h=Math.round(b*h),e.i=Math.round(b*i),e.j=Math.round(g*g),e.k=Math.round(g*h),e.l=Math.round(g*i),e.m=Math.round(h*h),e.n=Math.round(h*i),e.o=Math.round(i*i);var j=function(a,b){for(var c=[],d=0;d<a.length;d++)for(var e=0;e<a[d].length;e++){var f=a[d][e];c.push(f)}return c}(d);return{decode:function(a){for(var b=function(a,b){for(var c=[],d=0;d<a.length;d++)c.push(a[d]^b[d]);return c}(c,a),d=function(a){for(var b=0;b<a.length;b++)if(1==a[b])return b;return-1}(b),k=!1,l=0;l<j.length;l++)if(b==j[l]){k=!0;break}return k?{error:!1,data:a}:{error:!0,data:null}},encode:function(a){for(var b=function(a,b){for(var c=[],d=0;d<a.length;d++)c.push(a[d]^b[d]);return c}(c,a),d=0;d<j.length;d++)if(b==j[d])return a;return null}}}}(3),n=function(){function a(a){for(var b=0;b<e.length;b++)if(e[b]==a)return!0;return!1}var b=function(){function a(a,b){this.exp=a,this.log=b}return a}(),c=function(){function a(){this.log=[],this.exp=[];for(var b=0;256>b;b++)this.exp[b]=0,this.log[b]=0;for(var b=0,c=1;256>b;b++)c<<=1,c>=256&&(c^=285),this.exp[b]=c,this.log[this.exp[b]]=b;this.log[1]=0}return a.prototype={gexp:function(a){return this.exp[a]},glog:function(a){return this.log[a]}},a}();return new c}(),o=function(){function a(a){for(var b=0;b<d.length;b++)if(a<=d[b])return b}var b=function(){function a(a,b){this.num=[],this.den=[];for(var c=0;c<=a;c++)this.num.push(0),this.den.push(0);for(var c=0;c<=a;c++){this.num[c]=b.get(c);for(var d=0;d<=a;d++)this.den[c]=b.get(c)}for(var c=0;c<=a;c++){for(var e=b.get(c),f=0;f<=a;f++)this.num[c]^=b.get(f)*b.get(c-f);for(var f=0;f<=a;f++)this.den[c]^=b.get(f)*b.get(c-f)}}return a.prototype={get:function(a){return this.num[a]},getLength:function(){return this.num.length},multiply:function(a){for(var b=new Array(this.getLength()+a.getLength()-1),c=0;c<this.getLength();c++)for(var d=0;d<a.getLength();d++)b[c+d]^=n.gexp(n.glog(this.get(c))+n.glog(a.get(d)));return new o(b,0)},mod:function(a){if(this.getLength()-a.getLength()<0)return this;for(var b=n.glog(this.get(0))-n.glog(a.get(0)),c=new Array(this.getLength()),d=0;d<this.getLength();d++)c[d]=this.get(d);for(var d=0;d<a.getLength();d++)c[d]^=n.gexp(n.glog(a.get(d))+b);return new o(c,0).mod(a)}},a}();return j}(),g={};g.getCharCountIndicator=function(a,b){if(a==c.MODE_8BIT_BYTE)return 8;if(a==c.MODE_KANJI)return 8;if(b>=1&&10>b)return a==c.MODE_NUMBER?10:9;if(27>b)return a==c.MODE_NUMBER?12:11;if(b>=27)return a==c.MODE_NUMBER?14:13;throw new Error("typeNumber:"+b)},g.getBCHTypeInfo=function(a){for(var b=a<<10;g.getBCHDigit(b)-g.getBCHDigit(1335)>=0;)b^=1335<<g.getBCHDigit(b)-g.getBCHDigit(1335);return(a<<10|b)^21522},g.getBCHTypeNumber=function(a){for(var b=a<<12;g.getBCHDigit(b)-g.getBCHDigit(7973)>=0;)b^=7973<<g.getBCHDigit(b)-g.getBCHDigit(7973);return a<<12|b},g.getBCHDigit=function(a){for(var b=0;0!=a;)b++,a>>>=1;return b},g.getPatternPosition=function(a){return f[a-1]},g.getMask=function(a,b,c){switch(a){case e.PATTERN000:return(b+c)%2==0;case e.PATTERN001:return b%2==0;case e.PATTERN010:return c%3==0;case e.PATTERN011:return(b+c)%3==0;case e.PATTERN100:return(Math.floor(b/2)+Math.floor(c/3))%2==0;case e.PATTERN101:return b*c%2+b*c%3==0;case e.PATTERN110:return(b*c%2+b*c%3)%2==0;case e.PATTERN111:return(b*c%3+(b+c)%2)%2==0;default:throw new Error("bad maskPattern:"+a)}},g.getErrorCorrectPolynomial=function(a){for(var b=new o([1],0),c=0;a>c;c++)b=b.multiply(new o([1,n.gexp(c)],0));return b},g.stringToBytes=function(a){for(var b=[],c=0;c<a.length;c++){var d=a.charCodeAt(c);b.push(255&d)}return b};var o=function(){function a(a,b){if(null==a.length)throw new Error(a.length+"/"+b);for(var c=0;c<a.length&&0==a[c];)c++;this.num=new Array(a.length-c+b);for(var d=0;d<a.length-c;d++)this.num[d]=a[d+c]}return a.prototype={get:function(a){return this.num[a]},getLength:function(){return this.num.length},multiply:function(a){for(var b=new Array(this.getLength()+a.getLength()-1),c=0;c<this.getLength();c++)for(var d=0;d<a.getLength();d++)b[c+d]^=n.gexp(n.glog(this.get(c))+n.glog(a.get(d)));return new o(b,0)},mod:function(a){if(this.getLength()-a.getLength()<0)return this;for(var b=n.glog(this.get(0))-n.glog(a.get(0)),c=new Array(this.getLength()),d=0;d<this.getLength();d++)c[d]=this.get(d);for(var d=0;d<a.getLength();d++)c[d]^=n.gexp(n.glog(a.get(d))+b);return new o(c,0).mod(a)}},a}(),n=function(){for(var a=new Array(256),b=new Array(256),c=0;8>c;c++)a[c]=1<<c;for(var c=8;256>c;c++)a[c]=a[c-4]^a[c-5]^a[c-6]^a[c-8];for(var c=0;255>c;c++)b[a[c]]=c;var d={};return d.gexp=function(b){return a[b]},d.glog=function(a){if(1>a)throw new Error("glog("+a+")");return b[a]},d}(),p=function(){function a(){this.rsBlock=[],this.totalDataCount=0,this.totalECCount=0}return a.prototype={getRSBlocks:function(){return this.rsBlock},getTotalDataCount:function(){return this.totalDataCount},getTotalECCount:function(){return this.totalECCount}},a}();b.createData=function(a,c,d){for(var e=c,f=l.getRSBlocks(a,e),g=new p,h=0;h<d.length;h++){var i=d[h];g.put(i.getMode(),4),g.put(i.getLength(),b.getCharCountIndicator(i.getMode(),a)),i.write(g)}var j=0;if(j=b.getTotalDataCount(a,e),g.getLengthInBits()>8*j)throw new Error("code length overflow. ("+g.getLengthInBits()+">"+8*j+")");for(g.getLengthInBits()+4<=8*j&&g.put(0,4);g.getLengthInBits()%8!=0;)g.putBit(0);for(;;){if(g.getLengthInBits()>=8*j)break;if(g.put(b.PAD0,8),g.getLengthInBits()>=8*j)break;g.put(b.PAD1,8)}return b.createBytes(g,f)},b.createBytes=function(a,b){for(var c=0,d=0,e=0,f=new Array(b.length),g=new Array(b.length),h=0;h<b.length;h++){var i=b[h].dataCount,j=b[h].totalCount-i;d=Math.max(d,i),e=Math.max(e,j),f[h]=new Array(i);for(var k=0;k<f[h].length;k++)f[h][k]=255&a.buffer[k+c];c+=i;var l=b.getErrorCorrectPolynomial(j),m=new o(f[h],l.getLength()-1),n=m.mod(l);g[h]=new Array(l.getLength()-1);for(var k=0;k<g[h].length;k++){var p=k+n.getLength()-g[h].length;g[h][k]=p>=0?n.get(p):0}}for(var q=0,k=0;k<b.length;k++)q+=b[k].totalCount;for(var r=new Array(q),s=0,k=0;d>k;k++)for(var h=0;h<b.length;h++)k<f[h].length&&(r[s++]=f[h][k]);for(var k=0;e>k;k++)for(var h=0;h<b.length;h++)k<g[h].length&&(r[s++]=g[h][k]);return r};var q=function(){function a(a,b){this.typeNumber=a,this.errorCorrectLevel=b,this.modules=null,this.moduleCount=0,this.dataCache=null,this.dataList=[]}return a.prototype={addData:function(a){var b=new c(a);return this.dataList.push(b),this.dataCache=null,this},isDark:function(a,b){if(0>a||this.moduleCount<=a||0>b||this.moduleCount<=b)throw new Error(a+","+b);return this.modules[a][b]},getModuleCount:function(){return this.moduleCount},make:function(){if(this.typeNumber<1){var a=1;for(a=1;40>a;a++){for(var c=b.getRSBlocks(a,this.errorCorrectLevel),d=new p,e=0,f=0;f<c.length;f++){var g=c[f];d.put(g.getMode(),4),d.put(g.getLengthInBits(),b.getCharCountIndicator(g.getMode(),a)),g.write(d)}var h=b.getTotalDataCount(a,this.errorCorrectLevel);if(d.getLengthInBits()<=8*h)break}this.typeNumber=a}this.makeImpl(!1,this.getBestMaskPattern())},makeImpl:function(a,b){this.moduleCount=4*this.typeNumber+17,this.modules=new Array(this.moduleCount);for(var c=0;c<this.moduleCount;c++){this.modules[c]=new Array(this.moduleCount);for(var d=0;d<this.moduleCount;d++)this.modules[c][d]=null}this.setupPositionProbePattern(0,0),this.setupPositionProbePattern(this.moduleCount-7,0),this.setupPositionProbePattern(0,this.moduleCount-7),this.setupPositionAdjustPattern(),this.setupTimingPattern(),this.setupTypeInfo(a,b),this.typeNumber>=7&&this.setupTypeNumber(a),null==this.dataCache&&(this.dataCache=b.createData(this.typeNumber,this.errorCorrectLevel,this.dataList)),this.mapData(this.dataCache,b)},setupPositionProbePattern:function(a,b){for(var c=-1;7>=c;c++)if(!(-1>=a+c||this.moduleCount<=a+c))for(var d=-1;7>=d;d++)-1>=b+d||this.moduleCount<=b+d||(this.modules[a+c][b+d]=c>=0&&6>=c&&(0==d||6==d)||d>=0&&6>=d&&(0==c||6==c)||c>=2&&4>=c&&d>=2&&4>=d?!0:!1)},getBestMaskPattern:function(){for(var a=0,b=0,c=0;8>c;c++){this.makeImpl(!0,c);var d=b.getLostPoint(this);(0==c||a>d)&&(a=d,b=c)}return b},setupTimingPattern:function(){for(var a=8;a<this.moduleCount-8;a++)null==this.modules[a][6]&&(this.modules[a][6]=a%2==0);for(var b=8;b<this.moduleCount-8;b++)null==this.modules[6][b]&&(this.modules[6][b]=b%2==0)},setupPositionAdjustPattern:function(){for(var a=b.getPatternPosition(this.typeNumber),c=0;c<a.length;c++)for(var d=0;d<a.length;d++){var e=a[c],f=a[d];if(null==this.modules[e][f])for(var g=-2;2>=g;g++)for(var h=-2;2>=h;h++)this.modules[e+g][f+h]=-2==g||2==g||-2==h||2==h||0==g&&0==h?!0:!1}},setupTypeNumber:function(a){for(var c=b.getBCHTypeNumber(this.typeNumber),d=0;18>d;d++){var e=!a&&1==(1&c>>d);this.modules[Math.floor(d/3)][d%3+this.moduleCount-8-3]=e}for(var d=0;18>d;d++){var e=!a&&1==(1&c>>d);this.modules[d%3+this.moduleCount-8-3][Math.floor(d/3)]=e}},setupTypeInfo:function(a,c){for(var d=this.errorCorrectLevel<<3|c,e=b.getBCHTypeInfo(d),f=0;15>f;f++){var g=!a&&1==(1&e>>f);6>f?this.modules[8][f+(this.moduleCount-8-6)-1]=g:8>f?this.modules[8][8+(this.moduleCount-8-8)-f-1]=g:this.modules[this.moduleCount-8-(15-f)][8]=g}for(var f=0;15>f;f++){var g=!a&&1==(1&e>>f);8>f?this.modules[f+(this.moduleCount-8-8)-1][8]=g:9>f?this.modules[8][15-f-1+8-3+1-1]=g:this.modules[8][15-f-1]=g}this.modules[this.moduleCount-8][8]=!a},mapData:function(a,b){for(var c=-1,d=this.moduleCount-1,e=7,f=0,g=this.moduleCount-1;g>0;g-=2)for(6==g&&g--;;){for(var h=0;2>h;h++)if(null==this.modules[d][g-h]){var i=!1;f<a.length&&(i=1==(1&a[f]>>>e));var j=b.getMask(b,d,g-h);j&&(i=!i),this.modules[d][g-h]=i,e--,-1==e&&(f++,e=7)}if(d+=c,0>d||this.moduleCount<=d){d-=c,c=-c;break}}}},a.PAD0=236,a.PAD1=17,a.createData=function(a,c,d){for(var e=b.getRSBlocks(a,c),f=new p,g=0;g<d.length;g++){var h=d[g];f.put(h.getMode(),4),f.put(h.getLength(),b.getCharCountIndicator(h.getMode(),a)),h.write(f)}var i=0;if(i=b.getTotalDataCount(a,c),f.getLengthInBits()>8*i)throw new Error("code length overflow. ("+f.getLengthInBits()+">"+8*i+")");for(f.getLengthInBits()+4<=8*i&&f.put(0,4);f.getLengthInBits()%8!=0;)f.putBit(0);for(;;){if(f.getLengthInBits()>=8*i)break;if(f.put(a.PAD0,8),f.getLengthInBits()>=8*i)break;f.put(a.PAD1,8)}return a.createBytes(f,e)},a.createBytes=function(a,c){for(var d=0,e=0,f=0,g=new Array(c.length),h=new Array(c.length),i=0;i<c.length;i++){var j=c[i].dataCount,k=c[i].totalCount-j;e=Math.max(e,j),f=Math.max(f,k),g[i]=new Array(j);for(var l=0;l<g[i].length;l++)g[i][l]=255&a.buffer[l+d];d+=j;var m=b.getErrorCorrectPolynomial(k),n=new o(g[i],m.getLength()-1),p=n.mod(m);h[i]=new Array(m.getLength()-1);for(var l=0;l<h[i].length;l++){var q=l+p.getLength()-h[i].length;h[i][l]=q>=0?p.get(q):0}}for(var r=0,l=0;l<c.length;l++)r+=c[l].totalCount;for(var s=new Array(r),t=0,l=0;e>l;l++)for(var i=0;i<c.length;i++)l<g[i].length&&(s[t++]=g[i][l]);for(var l=0;f>l;l++)for(var i=0;i<c.length;i++)l<h[i].length&&(s[t++]=h[i][l]);return s};var r=16;b.getRSBlocks=function(a,b){var c=b;switch(b){case d.L:c=0;break;case d.M:c=1;break;case d.Q:c=2;break;case d.H:c=3}var e=[],f=function(a){e=[],e.totalCount=a,e.dataCount=0}(a);return e};var s=function(a){for(var b=1,c=0,d=new l(a),e=Math.ceil(a/r),f=[],g=0;g<e;g++)f.push(1);for(var h=[],i=0;i<e;i++){for(var j=1,k=0;k<f[i];k++)j=j*f[i-k-1]+1;h.push(j)}for(var m=h.sort(function(a,b){return b-a}),n=0;n<m.length;n++)if(m[n]<=a){b=m[n];break}for(var o=Math.floor(a/b),p=new Array(b),q=0;b>q;q++){p[q]=o;for(var s=0;s<e;s++)if(f[s]==p[q]){f[s]++;break}}for(var t=0,u=0;u<f.length;u++)t+=f[u]*h[u];for(var v=0;v<p.length;v++)c+=p[v];return{totalCount:a,dataCount:c,ecCount:a-c,blocks:p,ecBlocks:function(a,b){for(var c=[],d=0;d<b.length;d++)c.push(0);for(var e=0,f=0;f<a.totalCount;f++){var g=f%a.blocks.length;c[g]++}return c}({totalCount:a,blocks:p},f)}};return QRCode=function(a,b){if(this.version=function(){var a=function(){for(var a=0,b=0,c=new Array(40),d=0;40>d;d++){c[d]=s(d+1);var e=c[d].totalCount;a+=e}return c}();return{getInfo:function(b){return a[b-1]}}}(),this.stringToBytes=function(a){for(var b=[],c=0;c<a.length;c++){var d=a.charCodeAt(c);b.push(255&d)}return b},this.create=function(a,b){var c=this.stringToBytes(a),d=b;return new q(1,d).addData(c).make()},this.createImg=function(a,b){for(var c=this.create(a,b),d=c.getModuleCount(),e=4,f=new Image(d*e,d*e),g=0;d>g;g++)for(var h=0;d>h;h++){var i=c.isDark(g,h)?0:1;for(var j=0;j<e;j++)for(var k=0;k<e;k++)f.setPixel(g*e+j,h*e+k,i)}return f},this.createTable=function(a,b){for(var c=this.create(a,b),d=c.getModuleCount(),e='<table style="border-collapse:collapse;border:0">',f=0;d>f;f++){e+="<tr>";for(var g=0;d>g;g++){var h=c.isDark(f,g)?"#000":"#fff";e+='<td style="width:2px;height:2px;background:'+h+'"></td>'}e+="</tr>"}return e+="</table>"}}}(),function(){function a(a,b,c){var d=document.createElement("canvas"),e=d.getContext("2d"),f=b,g=c||0,h=function(a){if("string"==typeof a&&(a=document.getElementById(a)),!a)throw new Error("element not found")}(a),i=h.clientWidth,j=h.clientHeight;d.width=i*2,d.height=j*2,e.scale(2,2);var k=Math.min(i,j);e.fillStyle="#fff",e.fillRect(0,0,k,k),e.fillStyle="#000";for(var l=0;l<f.getModuleCount();l++)for(var m=0;m<f.getModuleCount();m++)f.isDark(l,m)&&e.fillRect(m*k/f.getModuleCount()+g,l*k/f.getModuleCount()+g,k/f.getModuleCount(),k/f.getModuleCount());var n=new Image;n.src=d.toDataURL("image/png"),n.width=k,n.height=k,h.innerHTML="",h.appendChild(n)}"function"==typeof define&&define.amd?define([],function(){return a}):"object"==typeof exports?(module.exports=a,exports=a):window.QRCode=a}()}();
+
+  var url = 'https://alirenko.github.io/marcofidel/';
+  var container = document.getElementById('qrcode-container');
+  var size = Math.min(container.parentElement.clientWidth, 260);
+  var qr = new QRCode(-1, 2);
+  qr.addData(url);
+  qr.make();
+  var moduleCount = qr.getModuleCount();
+  var canvas = document.createElement('canvas');
+  var scale = Math.floor(size / moduleCount);
+  canvas.width = moduleCount * scale;
+  canvas.height = moduleCount * scale;
+  var ctx = canvas.getContext('2d');
+  ctx.fillStyle = '#FFFFFF';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = '#0D3B66';
+  for (var r = 0; r < moduleCount; r++) {
+    for (var c = 0; c < moduleCount; c++) {
+      if (qr.isDark(r, c)) {
+        ctx.fillRect(c * scale, r * scale, scale, scale);
+      }
+    }
+  }
+  container.appendChild(canvas);
+})();
+
+function copyUrl() {
+  var url = 'https://alirenko.github.io/marcofidel/';
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(url).then(function() {
+      var btn = document.getElementById('copy-btn');
+      btn.textContent = 'Copiado!';
+      setTimeout(function() { btn.textContent = 'Copiar link'; }, 2000);
+    });
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = url;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    var btn = document.getElementById('copy-btn');
+    btn.textContent = 'Copiado!';
+    setTimeout(function() { btn.textContent = 'Copiar link'; }, 2000);
+  }
+}
+</script>
 </body>
 </html>
